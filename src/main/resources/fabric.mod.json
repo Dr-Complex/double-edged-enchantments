@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "double-edged-enchantments",
+	"version": "${version}",
+	"name": "Double Edged Enchantments",
+	"description": "This mod adds enchantments with their cursed counterparts",
+	"authors": [
+		"Dr Complex"
+	],
+	"contact": {
+	},
+	"license": "MIT",
+	"icon": "assets/double-edged-enchantments/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "com.dr_complex.DEE_Main"
+		],
+		"fabric-datagen": [
+			"com.dr_complex.DEE_DataGen"
+		],
+		"client": [
+			"com.dr_complex.DEE_Client"
+		]
+	},
+	"mixins": [
+		"double-edged-enchantments.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
