@@ -10,7 +10,7 @@
 	"contact": {
 	},
 	"license": "MIT",
-	"icon": "assets/double-edged-enchantments/icon.png",
+	"icon": "assets/double-edged-enchantments/cursed_book.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -34,5 +34,17 @@
 	},
 	"suggests": {
 		"another-mod": "*"
+	},"custom": {
+	"modmenu": {
+		"badges": [ "library", "deprecated" ],
+		"parent": {
+			"id": "double-edged-enchantments",
+			"name": "Double Edged Enchantments",
+			"description": "This mod adds enchantments with their cursed counterparts",
+			"icon": "assets/double-edged-enchantments/cursed_book.png",
+			"badges": []
+		},
+		"update_checker": true
 	}
+}
 }

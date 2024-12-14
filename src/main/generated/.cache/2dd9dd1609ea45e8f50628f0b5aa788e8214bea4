@@ -1,0 +1,13 @@
+// 1.21.4	-999999999-01-01T00:00:00	Double Edged Enchantments/Model Definitions
+5f7b74fc44076d8615ef1e66902aed248376a2c5 assets/double-edged-enchantments/blockstates/voidfang_block.json
+ddf161653f6ded6aa1c5940dbd682b553be5873c assets/double-edged-enchantments/blockstates/voidfang_ore_end.json
+87bf48942181deb3b842086b81270a4d9636b192 assets/double-edged-enchantments/items/revered_enderpearl.json
+7acc4b2baee65a77da9c4a98e449c713056b0190 assets/double-edged-enchantments/items/voidfang.json
+0a9f2fd15d1dfda4d1f996a2dad732d79beca9d0 assets/double-edged-enchantments/items/voidfang_block.json
+e855cf97972db6ab5769b310fe9542f626bf0af6 assets/double-edged-enchantments/items/voidfang_ore_end.json
+1d7c87179917ca7bb9785acb8bc7d4d17cf1cc70 assets/double-edged-enchantments/items/xp_needle.json
+d116220163fc0a2bc5e2510454d1337a088f1a60 assets/double-edged-enchantments/models/block/voidfang_block.json
+55ca0405abb7bfee7516eba85b95d7cb97779572 assets/double-edged-enchantments/models/block/voidfang_ore_end.json
+6b72dcb1f98c25434c30aadbf24c1fc05cb1beff assets/double-edged-enchantments/models/item/revered_enderpearl.json
+ff0db93ec0d75a0cd3b0ee69428dd58e09156988 assets/double-edged-enchantments/models/item/voidfang.json
+7ec9a088296440e7c6169209ee3163e3fff7c060 assets/double-edged-enchantments/models/item/xp_needle.json
