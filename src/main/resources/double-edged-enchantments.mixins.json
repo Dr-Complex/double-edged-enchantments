@@ -1,11 +1,12 @@
 {
-	"required": true,
-	"package": "com.dr_complex.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	}
+  "required": true,
+  "package": "net.dr_complex.double_edged_enchantments.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ExampleMixin",
+    "Player_Range_Mixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

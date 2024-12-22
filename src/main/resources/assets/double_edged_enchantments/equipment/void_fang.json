@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid":[
+      {
+        "texture": "double_edged_enchantments:void_fang"
+      }
+    ],
+    "humanoid_leggings":[
+      {
+        "texture": "double_edged_enchantments:void_fang"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "double_edged_enchantments:void_fang"
+      }
+    ]
+  }
+}

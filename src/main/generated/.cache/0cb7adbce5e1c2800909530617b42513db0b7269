@@ -1,1 +1,13 @@
 // 1.21.4	-999999999-01-01T00:00:00	Double Edged Enchantments/Tags for minecraft:item
+487b00a82641ebf64548a9f32f0de4c6fae992ff data/double_edged_enchantments/tags/item/void_fang_repair.json
+2b47a9a2b699408cbe6b13963f804f6bbfcfa596 data/minecraft/tags/item/axes.json
+18f204968b4ed48b13859afbe4a9a34db6084509 data/minecraft/tags/item/chest_armor.json
+09ee9b823a310f8b371d19f26ef929879f1f02ca data/minecraft/tags/item/foot_armor.json
+9455327afee255bca103dfb4fde9a108dce7bc88 data/minecraft/tags/item/head_armor.json
+5c16c3359587290fd9abe09741cf11b2241e4dd6 data/minecraft/tags/item/hoes.json
+6261988ee9cd1798bcfad203e470443ee0457105 data/minecraft/tags/item/leg_armor.json
+6b03e1529ff900b03d554c95b712bc4e1f44cb71 data/minecraft/tags/item/pickaxes.json
+2587d0507ef80134edd8cf9d1c6d8df7ef9edab6 data/minecraft/tags/item/shovels.json
+042cdbd201d97507bf8072415d44b908310e786d data/minecraft/tags/item/swords.json
+487b00a82641ebf64548a9f32f0de4c6fae992ff data/minecraft/tags/item/trim_materials.json
+b6863135303398f376cecefb3f9bff2c128edcf2 data/minecraft/tags/item/trimmable_armor.json

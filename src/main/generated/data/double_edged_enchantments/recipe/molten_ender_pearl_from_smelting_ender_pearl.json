@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 250,
+  "experience": 0.45,
+  "group": "molten_ender_pearl",
+  "ingredient": "minecraft:ender_pearl",
+  "result": {
+    "id": "double_edged_enchantments:molten_ender_pearl"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "asset_name": "void_fang",
+  "description": {
+    "color": "#6200B3",
+    "shadow_color": 13582297,
+    "translate": "trim_material.double_edged_enchantments.void_fang"
+  },
+  "ingredient": "double_edged_enchantments:void_fang"
+}

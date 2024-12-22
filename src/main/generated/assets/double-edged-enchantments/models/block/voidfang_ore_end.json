@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "double-edged-enchantments:block/voidfang_ore_end"
-  }
-}
