@@ -2,15 +2,30 @@ package net.dr_complex.double_edged_enchantments.item;
 
 import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.dr_complex.double_edged_enchantments.block.DEE_Blocks;
+import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnchantmentLevelEntry;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.text.Text;
+
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 
 public class DEE_ItemGroup {
+
+    private static boolean Run = true;
+
     public static final ItemGroup DEE_GROUP = Registry.register(Registries.ITEM_GROUP,DEE_Main.id("dee_group"),
             FabricItemGroup.builder()
                     .icon(()->new ItemStack(DEE_Items.VOID_FANG))
@@ -38,9 +53,17 @@ public class DEE_ItemGroup {
 
                         entries.add(DEE_Blocks.VOID_FANG_BLOCK);
                         entries.add(DEE_Blocks.END_VOID_FANG_ORE);
-                        
-                    }).build()
-    );
+
+                        displayContext.lookup().getOptional(RegistryKeys.ENCHANTMENT).ifPresent(enchantmentImpl -> enchantmentImpl.streamEntries()
+                                .filter(tag -> !tag.isIn(EnchantmentTags.CURSE))
+                                .map(reference -> EnchantmentHelper.getEnchantedBookWith(new EnchantmentLevelEntry(reference,reference.value().getMaxLevel())))
+                                .forEach(itemStack -> entries.add(itemStack, ItemGroup.StackVisibility.PARENT_TAB_ONLY)));
+
+                        displayContext.lookup().getOptional(RegistryKeys.ENCHANTMENT).ifPresent(enchantmentImpl -> enchantmentImpl.streamEntries()
+                                .filter(tag -> tag.isIn(EnchantmentTags.CURSE))
+                                .map(reference -> EnchantmentHelper.getEnchantedBookWith(new EnchantmentLevelEntry(reference,reference.value().getMaxLevel())))
+                                .forEach(itemStack -> entries.add(itemStack, ItemGroup.StackVisibility.PARENT_TAB_ONLY)));
+                    }).build());
 
     public static void LoadItemGroups(){
         DEE_Main.LOGGER.info("ItemGroups are now known");

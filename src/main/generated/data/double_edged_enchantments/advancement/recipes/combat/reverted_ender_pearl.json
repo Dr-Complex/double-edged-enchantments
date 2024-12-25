@@ -5,6 +5,7 @@
       "conditions": {
         "items": [
           {
+            "count": 3,
             "items": "minecraft:amethyst_shard"
           }
         ]
@@ -15,6 +16,7 @@
       "conditions": {
         "items": [
           {
+            "count": 2,
             "items": "double_edged_enchantments:molten_ender_pearl"
           }
         ]

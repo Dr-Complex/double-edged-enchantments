@@ -32,7 +32,7 @@ public class DEE_Items {
     public static final Item VOID_FANG_LEGGINGS = registerItem("void_fang_leggings",new ArmorItem(DEE_ArmorMaterials.VOID_FANG_ARMOR, EquipmentType.LEGGINGS,new Item.Settings().rarity(Rarity.COMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("void_fang_leggings")))));
     public static final Item VOID_FANG_BOOTS = registerItem("void_fang_boots",new ArmorItem(DEE_ArmorMaterials.VOID_FANG_ARMOR, EquipmentType.BOOTS,new Item.Settings().rarity(Rarity.COMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("void_fang_boots")))));
     public static final Item VOID_FANG_HORSE_ARMOR = registerItem("void_fang_horse_armor",new AnimalArmorItem(DEE_ArmorMaterials.VOID_FANG_ARMOR, AnimalArmorItem.Type.EQUESTRIAN,new Item.Settings().rarity(Rarity.COMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("void_fang_horse_armor")))));
-    public static final Item BODY_SMITHING_TEMPLATE = registerItem("body_armor_trim_smithing_template", SmithingTemplateItem.of(new Item.Settings().rarity(Rarity.UNCOMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("body_trim_smithing_template")))));
+    public static final Item BODY_SMITHING_TEMPLATE = registerItem("body_armor_trim_smithing_template", SmithingTemplateItem.of(new Item.Settings().rarity(Rarity.UNCOMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("body_armor_trim_smithing_template")))));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM,DEE_Main.id(name),item);

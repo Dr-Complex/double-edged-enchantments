@@ -10,6 +10,12 @@
   "item.double_edged_enchantments.void_fang_pickaxe": "Void Fang Pickaxe",
   "item.double_edged_enchantments.void_fang_shovel": "Void Fang Shovel",
   "item.double_edged_enchantments.void_fang_hoe": "Void Fang Hoe",
+  "item.double_edged_enchantments.void_fang_helmet": "Void Fang Helmet",
+  "item.double_edged_enchantments.void_fang_chestplate": "Void Fang Chestplate",
+  "item.double_edged_enchantments.void_fang_leggings": "Void Fang Leggings",
+  "item.double_edged_enchantments.void_fang_boots": "Void Fang Boots",
+  "item.double_edged_enchantments.void_fang_horse_armor": "Void Fang Horse Armor",
+  "item.double_edged_enchantments.body_armor_trim_smithing_template": "Body Trim",
 
   "item.double_edged_enchantments.void_fang_ore_end": "Void Fang Ore?",
   "item.double_edged_enchantments.void_fang_block": "Block of Void Fang"

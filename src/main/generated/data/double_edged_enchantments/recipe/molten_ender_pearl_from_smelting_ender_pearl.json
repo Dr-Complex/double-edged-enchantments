@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "category": "misc",
-  "cookingtime": 250,
+  "cookingtime": 200,
   "experience": 0.45,
   "group": "molten_ender_pearl",
   "ingredient": "minecraft:ender_pearl",
