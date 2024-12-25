@@ -2,24 +2,16 @@ package net.dr_complex.double_edged_enchantments.item;
 
 import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.dr_complex.double_edged_enchantments.block.DEE_Blocks;
-import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.text.Text;
-
-import java.util.Arrays;
-import java.util.function.Predicate;
 
 
 public class DEE_ItemGroup {
