@@ -1,11 +1,10 @@
 package net.dr_complex.double_edged_enchantments.other;
 
-import net.dr_complex.double_edged_enchantments.DEE_Main;
 import com.mojang.serialization.Codec;
+import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.minecraft.component.ComponentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.function.UnaryOperator;

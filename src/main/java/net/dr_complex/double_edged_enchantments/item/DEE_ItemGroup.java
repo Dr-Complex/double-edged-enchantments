@@ -15,8 +15,6 @@ import net.minecraft.text.Text;
 
 public class DEE_ItemGroup {
 
-    private static boolean Run = true;
-
     public static final ItemGroup DEE_GROUP = Registry.register(Registries.ITEM_GROUP,DEE_Main.id("dee_group"),
             FabricItemGroup.builder()
                     .icon(()->new ItemStack(DEE_Items.XP_NEEDLE))

@@ -1,13 +1,11 @@
 package net.dr_complex.double_edged_enchantments.other;
 
-import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.trim.ArmorTrimMaterial;
 import net.minecraft.item.equipment.trim.ArmorTrimPattern;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -17,8 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 
 public class DEE_Trims {
-
-    public static final RegistryKey<ArmorTrimMaterial> VOID_FANG = RegistryKey.of(RegistryKeys.TRIM_MATERIAL, DEE_Main.id("void_fang"));
 
     public static void bootstrapM(Registerable<ArmorTrimMaterial> registerable){
 
@@ -30,8 +26,6 @@ public class DEE_Trims {
     }
 
     //↑--material : pattern--↓
-
-    public static final RegistryKey<ArmorTrimPattern> BODY = RegistryKey.of(RegistryKeys.TRIM_PATTERN,DEE_Main.id("body"));
 
     public static void bootstrapP(Registerable<ArmorTrimPattern> context){
 
