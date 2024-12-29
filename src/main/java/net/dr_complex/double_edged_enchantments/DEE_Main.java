@@ -7,13 +7,16 @@ import net.dr_complex.double_edged_enchantments.item.DEE_ItemGroup;
 import net.dr_complex.double_edged_enchantments.item.DEE_Items;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DEE_Main implements ModInitializer {
 	public static final String MOD_ID = "double_edged_enchantments";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static Identifier id(String path){
+	@Contract("_ -> new")
+	public static @NotNull Identifier id(String path){
 		return Identifier.of(MOD_ID,path);
 	}
 

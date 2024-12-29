@@ -16,12 +16,6 @@ public class DEE_BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(DEE_Blocks.VOID_FANG_BLOCK)
-                .add(DEE_Blocks.END_VOID_FANG_ORE);
 
-        getOrCreateTagBuilder(DEE_Tags.Blocks.NEEDS_NETHERITE_TOOL)
-                .add(DEE_Blocks.END_VOID_FANG_ORE)
-                .add(DEE_Blocks.VOID_FANG_BLOCK);
     }
 }

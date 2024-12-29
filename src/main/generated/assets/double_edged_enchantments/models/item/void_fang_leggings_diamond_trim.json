@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "double_edged_enchantments:item/void_fang_leggings",
-    "layer1": "minecraft:trims/items/leggings_trim_diamond"
-  }
-}

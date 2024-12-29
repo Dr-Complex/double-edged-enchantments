@@ -1,22 +1,22 @@
 {
+
   "item_group.double_edged_enchantments.dee_group": "Double Edged enchantments",
 
-  "item.double_edged_enchantments.void_fang": "Void Fang",
   "item.double_edged_enchantments.xp_needle": "XP Needle",
   "item.double_edged_enchantments.reverted_ender_pearl": "Reverted Ender Pearl",
-  "item.double_edged_enchantments.molten_ender_pearl": "Molten Ender Pearl",
-  "item.double_edged_enchantments.void_fang_sword": "Void Fang Sword",
-  "item.double_edged_enchantments.void_fang_axe": "Void Fang Axe",
-  "item.double_edged_enchantments.void_fang_pickaxe": "Void Fang Pickaxe",
-  "item.double_edged_enchantments.void_fang_shovel": "Void Fang Shovel",
-  "item.double_edged_enchantments.void_fang_hoe": "Void Fang Hoe",
-  "item.double_edged_enchantments.void_fang_helmet": "Void Fang Helmet",
-  "item.double_edged_enchantments.void_fang_chestplate": "Void Fang Chestplate",
-  "item.double_edged_enchantments.void_fang_leggings": "Void Fang Leggings",
-  "item.double_edged_enchantments.void_fang_boots": "Void Fang Boots",
-  "item.double_edged_enchantments.void_fang_horse_armor": "Void Fang Horse Armor",
-  "item.double_edged_enchantments.body_armor_trim_smithing_template": "Body Trim",
+  "item.double_edged_enchantments.debugging_tool": "Debugging Tool",
 
-  "item.double_edged_enchantments.void_fang_ore_end": "Void Fang Ore?",
-  "item.double_edged_enchantments.void_fang_block": "Block of Void Fang"
+  "enchantment.double_edged_enchantments.entomophobia": "Curse of Entomophobia",
+  "enchantment.double_edged_enchantments.rebuilding": "Curse of Rebuilding",
+  "enchantment.double_edged_enchantments.resonating": "Curse of Resonating",
+  "enchantment.double_edged_enchantments.dullness": "Curse of Dullness",
+  "enchantment.double_edged_enchantments.fumbling": "Curse of Fumbling",
+  "enchantment.double_edged_enchantments.fragile": "Curse of Fragile",
+  "enchantment.double_edged_enchantments.unlucky": "Curse of Unlucky",
+  "enchantment.double_edged_enchantments.cruelness": "Curse of Cruelness",
+
+
+  "enchantment.double_edged_enchantments.lucky": "Lucky",
+  "enchantment.double_edged_enchantments.criticality": "Criticality"
+
 }

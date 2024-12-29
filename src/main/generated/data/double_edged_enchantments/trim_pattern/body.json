@@ -1,8 +1,0 @@
-{
-  "asset_id": "double_edged_enchantments:body",
-  "decal": false,
-  "description": {
-    "translate": "trim_pattern.double_edged_enchantments.body"
-  },
-  "template_item": "double_edged_enchantments:body_armor_trim_smithing_template"
-}

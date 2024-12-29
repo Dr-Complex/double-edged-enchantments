@@ -16,12 +16,17 @@ public class DEE_EnchantmentTagProvider extends FabricTagProvider.EnchantmentTag
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(EnchantmentTags.CURSE)
-                .add(DEE_Enchantments.CURSE_UNFAVOURABLE)
-                .add(DEE_Enchantments.CURSE_CRITICAL_MISS)
-                .add(DEE_Enchantments.CURSE_ENTOMOPHOBIA);
+                .add(DEE_Enchantments.CURSE_UNLUCKY)
+                .add(DEE_Enchantments.CURSE_CRUELNESS)
+                .add(DEE_Enchantments.CURSE_ENTOMOPHOBIA)
+                .add(DEE_Enchantments.CURSE_FUMBLING)
+                .add(DEE_Enchantments.CURSE_RESONATING)
+                .add(DEE_Enchantments.CURSE_REBUILDING)
+                .add(DEE_Enchantments.CURSE_DULLNESS)
+                .add(DEE_Enchantments.CURSE_FRAGILE);
 
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
                 .add(DEE_Enchantments.ENCHANTMENT_LUCKY)
-                .add(DEE_Enchantments.ENCHANTMENT_PIVOTAL);
+                .add(DEE_Enchantments.ENCHANTMENT_CRITICALITY);
     }
 }

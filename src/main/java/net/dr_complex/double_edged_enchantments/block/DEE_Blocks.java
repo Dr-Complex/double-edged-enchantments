@@ -1,7 +1,6 @@
 package net.dr_complex.double_edged_enchantments.block;
 
 import net.dr_complex.double_edged_enchantments.DEE_Main;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -9,13 +8,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Rarity;
 
 public class DEE_Blocks {
-
-    public static final Block END_VOID_FANG_ORE = registerBlock("void_fang_ore_end",new Block(AbstractBlock.Settings.create().strength(6f).dropsNothing().requiresTool().sounds(BlockSoundGroup.STONE).registryKey(RegistryKey.of(RegistryKeys.BLOCK,DEE_Main.id("void_fang_ore_end")))));
-    public static final Block VOID_FANG_BLOCK = registerBlock("void_fang_block",new Block(AbstractBlock.Settings.create().strength(6f).requiresTool().sounds(BlockSoundGroup.NETHERITE).registryKey(RegistryKey.of(RegistryKeys.BLOCK,DEE_Main.id("void_fang_block")))));
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);

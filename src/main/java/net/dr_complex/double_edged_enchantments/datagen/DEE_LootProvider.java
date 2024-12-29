@@ -14,6 +14,6 @@ public class DEE_LootProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(DEE_Blocks.VOID_FANG_BLOCK);
+
     }
 }

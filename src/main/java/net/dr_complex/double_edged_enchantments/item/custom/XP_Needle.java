@@ -30,32 +30,37 @@ public class XP_Needle extends Item {
                 if(itemStack.get(DEE_DataComponentTypes.XP_CONTAINER) != null ){
                     if(user.experienceLevel >= 1){
                         this.increased = -1;
-                        itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,itemStack.get(DEE_DataComponentTypes.XP_CONTAINER)+1.0f);
+                        itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,itemStack.get(DEE_DataComponentTypes.XP_CONTAINER)+1);
                     }else {
                         this.increased = 0;
                         user.sendMessage(Text.literal("not enough xp"),true);
                     }
                 } else {
-                    itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,0f);
-
+                    itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,0);
                 }
             } else {
                 if(itemStack.get(DEE_DataComponentTypes.XP_CONTAINER) != null){
                     if(itemStack.get(DEE_DataComponentTypes.XP_CONTAINER) > 0){
                         this.increased = 1;
-                        itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,itemStack.get(DEE_DataComponentTypes.XP_CONTAINER)-1.0f);
+                        itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,itemStack.get(DEE_DataComponentTypes.XP_CONTAINER)-1);
                     } else {
                         this.increased = 0;
                         user.sendMessage(Text.literal("no xp contained"),true);
                     }
                 } else {
                     this.increased = 0;
-                    itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,0f);
+                    itemStack.set(DEE_DataComponentTypes.XP_CONTAINER,0);
                 }
             }
         }
+
+        if(increased > 0){
+            world.playSound(user,user.getX(),user.getY(),user.getZ(), SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.PLAYERS,0.5f,0.25f);
+        } else if (increased < 0) {
+            world.playSound(user,user.getX(),user.getY(),user.getZ(), SoundEvents.BLOCK_NOTE_BLOCK_PLING, SoundCategory.PLAYERS,0.5f,0.25f);
+        }
+
         user.experienceLevel += increased;
-        world.playSound(user,user.getX(),user.getY(),user.getZ(), SoundEvents.ENTITY_ITEM_FRAME_ROTATE_ITEM, SoundCategory.PLAYERS,0.5f,0.25f);
         return increased != 0 ? ActionResult.SUCCESS : ActionResult.FAIL;
     }
 
