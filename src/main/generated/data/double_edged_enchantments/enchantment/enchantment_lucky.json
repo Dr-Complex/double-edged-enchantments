@@ -4,11 +4,16 @@
     "translate": "enchantment.double_edged_enchantments.enchantment_lucky"
   },
   "effects": {
-    "minecraft:tick": [
+    "minecraft:attributes": [
       {
-        "effect": {
-          "type": "double_edged_enchantments:enchantment_lucky"
-        }
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 1.0,
+          "per_level_above_first": 1.0
+        },
+        "attribute": "minecraft:luck",
+        "id": "double_edged_enchantments:enchantment_lucky",
+        "operation": "add_value"
       }
     ]
   },

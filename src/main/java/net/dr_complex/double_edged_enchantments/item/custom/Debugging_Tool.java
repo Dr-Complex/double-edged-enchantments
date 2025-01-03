@@ -1,6 +1,7 @@
 package net.dr_complex.double_edged_enchantments.item.custom;
 
 import net.dr_complex.double_edged_enchantments.other.DEE_DataComponentTypes;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
@@ -60,12 +61,14 @@ public class Debugging_Tool extends Item{
 
     @Override
     public void appendTooltip(@NotNull ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+        stack.set(DEE_DataComponentTypes.RARITY_CONTAINER,1);
         if(stack.get(DEE_DataComponentTypes.MODE_CONTAINER) != null){
             GetMode(stack.get(DEE_DataComponentTypes.MODE_CONTAINER),null);
-            if(MathHelper.floorMod(frames,0.3f) > 0.15){
+            if(frames > 0.5){
                 tooltip.add(Text.literal("Mode").formatted(Formatting.GREEN).append(Text.literal(" : ").formatted(Formatting.DARK_GREEN).append(Text.literal(mode_type).formatted(Formatting.GREEN))));
+                if(frames > 1)frames = 0;
             }else {
-                tooltip.add(Text.literal("Mode").formatted(Formatting.WHITE).append(Text.literal(" : ").formatted(Formatting.GOLD).append(Text.literal(mode_type).formatted(Formatting.WHITE))));
+                tooltip.add(Text.literal("Mode").formatted(Formatting.DARK_GREEN).append(Text.literal(" : ").formatted(Formatting.GREEN).append(Text.literal(mode_type).formatted(Formatting.DARK_GREEN))));
             }
         } else {
             if(frames > 0.5f){
@@ -84,9 +87,16 @@ public class Debugging_Tool extends Item{
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if(clickType == ClickType.RIGHT){
             if(stack.get(DEE_DataComponentTypes.MODE_CONTAINER) != null){
-                stack.set(DEE_DataComponentTypes.MODE_CONTAINER, stack.get(DEE_DataComponentTypes.MODE_CONTAINER) + 1);
-                if(stack.get(DEE_DataComponentTypes.MODE_CONTAINER) > 36){
-                    stack.set(DEE_DataComponentTypes.MODE_CONTAINER,1);
+                if(!Screen.hasAltDown()){
+                    stack.set(DEE_DataComponentTypes.MODE_CONTAINER, stack.get(DEE_DataComponentTypes.MODE_CONTAINER) + 1);
+                    if(stack.get(DEE_DataComponentTypes.MODE_CONTAINER) > 36){
+                        stack.set(DEE_DataComponentTypes.MODE_CONTAINER,1);
+                    }
+                }else {
+                    stack.set(DEE_DataComponentTypes.MODE_CONTAINER,stack.get(DEE_DataComponentTypes.MODE_CONTAINER) - 1);
+                    if(stack.get(DEE_DataComponentTypes.MODE_CONTAINER) < 1){
+                        stack.set(DEE_DataComponentTypes.MODE_CONTAINER,36);
+                    }
                 }
             } else {
                 stack.set(DEE_DataComponentTypes.MODE_CONTAINER, 1);

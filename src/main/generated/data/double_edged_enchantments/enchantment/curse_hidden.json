@@ -1,0 +1,30 @@
+{
+  "anvil_cost": 3,
+  "description": {
+    "translate": "enchantment.double_edged_enchantments.curse_hidden"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": -1.5,
+        "attribute": "minecraft:max_absorption",
+        "id": "double_edged_enchantments:curse_hidden",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 30,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 23,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#minecraft:enchantable/vanishing",
+  "weight": 1
+}

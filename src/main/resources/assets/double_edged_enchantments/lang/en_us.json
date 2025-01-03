@@ -6,17 +6,35 @@
   "item.double_edged_enchantments.reverted_ender_pearl": "Reverted Ender Pearl",
   "item.double_edged_enchantments.debugging_tool": "Debugging Tool",
 
-  "enchantment.double_edged_enchantments.entomophobia": "Curse of Entomophobia",
-  "enchantment.double_edged_enchantments.rebuilding": "Curse of Rebuilding",
-  "enchantment.double_edged_enchantments.resonating": "Curse of Resonating",
-  "enchantment.double_edged_enchantments.dullness": "Curse of Dullness",
-  "enchantment.double_edged_enchantments.fumbling": "Curse of Fumbling",
-  "enchantment.double_edged_enchantments.fragile": "Curse of Fragile",
-  "enchantment.double_edged_enchantments.unlucky": "Curse of Unlucky",
-  "enchantment.double_edged_enchantments.cruelness": "Curse of Cruelness",
+  "enchantment.double_edged_enchantments.curse_entomophobia": "Curse of Entomophobia",
+  "enchantment.double_edged_enchantments.curse_rebuilding": "Curse of Rebuilding",
+  "enchantment.double_edged_enchantments.curse_resonating": "Curse of Resonating",
+  "enchantment.double_edged_enchantments.curse_dullness": "Curse of Dullness",
+  "enchantment.double_edged_enchantments.curse_fumbling": "Curse of Fumbling",
+  "enchantment.double_edged_enchantments.curse_fragile": "Curse of Fragile",
+  "enchantment.double_edged_enchantments.curse_unlucky": "Curse of Unlucky",
+  "enchantment.double_edged_enchantments.curse_cruelness": "Curse of Cruelness",
+  "enchantment.double_edged_enchantments.curse_jupiter": "Curse of Jupiter",
+  "enchantment.double_edged_enchantments.curse_iron_maiden": "Curse of Iron Maiden",
+  "enchantment.double_edged_enchantments.curse_narrow": "Curse of Narrow",
+  "enchantment.double_edged_enchantments.curse_soulless": "Curse of Soulless",
+  "enchantment.double_edged_enchantments.curse_loss": "Curse of Loss",
+  "enchantment.double_edged_enchantments.curse_unending": "Curse of Unending",
+  "enchantment.double_edged_enchantments.curse_impaled": "Curse of Impaled",
+  "enchantment.double_edged_enchantments.curse_stones": "Curse of Stones",
+  "enchantment.double_edged_enchantments.curse_thalassophobia": "Curse of Thalassophobia",
+  "enchantment.double_edged_enchantments.curse_necrophobia": "Curse of Necrophobia",
+  "enchantment.double_edged_enchantments.curse_ashes": "Curse of Ashes",
+  "enchantment.double_edged_enchantments.curse_drowning": "Curse of Drowning",
 
 
-  "enchantment.double_edged_enchantments.lucky": "Lucky",
-  "enchantment.double_edged_enchantments.criticality": "Criticality"
+  "enchantment.double_edged_enchantments.enchantment_lucky": "Lucky",
+  "enchantment.double_edged_enchantments.enchantment_criticality": "Criticality",
+  "enchantment.double_edged_enchantments.enchantment_moon": "Moon",
+  "enchantment.double_edged_enchantments.enchantment_return": "Return",
+  "enchantment.double_edged_enchantments.enchantment_revealing": "Revealing",
+
+  "enchantment.double_edged_enchantments.neutral_magic_growth": "Growth",
+  "enchantment.double_edged_enchantments.neutral_magic_shrunken": "Shrunken"
 
 }

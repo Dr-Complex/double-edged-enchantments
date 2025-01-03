@@ -1,0 +1,30 @@
+{
+  "anvil_cost": 1,
+  "description": {
+    "translate": "enchantment.double_edged_enchantments.enchantment_return"
+  },
+  "effects": {
+    "minecraft:prevent_equipment_drop": {},
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "double_edged_enchantments:enchantment_return"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 15,
+    "per_level_above_first": 10
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 5
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#minecraft:enchantable/vanishing",
+  "weight": 1
+}

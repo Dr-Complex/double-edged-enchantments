@@ -1,6 +1,7 @@
 package net.dr_complex.double_edged_enchantments.item;
 
 import net.dr_complex.double_edged_enchantments.DEE_Main;
+import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -26,12 +27,17 @@ public class DEE_ItemGroup {
                         entries.add(DEE_Items.DEBUGGING_TOOL);
 
                         displayContext.lookup().getOptional(RegistryKeys.ENCHANTMENT).ifPresent(enchantmentImpl -> enchantmentImpl.streamEntries()
-                                .filter(tag -> !tag.isIn(EnchantmentTags.CURSE))
+                                .filter(tag -> !tag.isIn(EnchantmentTags.CURSE) && !tag.isIn(DEE_Tags.Enchantments.NEUTRAL_MAGIC))
                                 .map(reference -> EnchantmentHelper.getEnchantedBookWith(new EnchantmentLevelEntry(reference,reference.value().getMaxLevel())))
                                 .forEach(itemStack -> entries.add(itemStack, ItemGroup.StackVisibility.PARENT_TAB_ONLY)));
 
                         displayContext.lookup().getOptional(RegistryKeys.ENCHANTMENT).ifPresent(enchantmentImpl -> enchantmentImpl.streamEntries()
-                                .filter(tag -> tag.isIn(EnchantmentTags.CURSE))
+                                .filter(tag -> tag.isIn(EnchantmentTags.CURSE) && !tag.isIn(DEE_Tags.Enchantments.NEUTRAL_MAGIC))
+                                .map(reference -> EnchantmentHelper.getEnchantedBookWith(new EnchantmentLevelEntry(reference,reference.value().getMaxLevel())))
+                                .forEach(itemStack -> entries.add(itemStack, ItemGroup.StackVisibility.PARENT_TAB_ONLY)));
+
+                        displayContext.lookup().getOptional(RegistryKeys.ENCHANTMENT).ifPresent(enchantmentImpl -> enchantmentImpl.streamEntries()
+                                .filter(tag -> !tag.isIn(EnchantmentTags.CURSE) && tag.isIn(DEE_Tags.Enchantments.NEUTRAL_MAGIC))
                                 .map(reference -> EnchantmentHelper.getEnchantedBookWith(new EnchantmentLevelEntry(reference,reference.value().getMaxLevel())))
                                 .forEach(itemStack -> entries.add(itemStack, ItemGroup.StackVisibility.PARENT_TAB_ONLY)));
                     }).build());

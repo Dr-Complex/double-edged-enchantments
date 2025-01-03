@@ -13,9 +13,10 @@ import net.minecraft.util.Rarity;
 
 public class DEE_Items {
 
+
     public static final Item REVERED_ENDER_PEARL = registerItem("reverted_ender_pearl", new Reverted_Ender_Pearl(new Item.Settings().rarity(Rarity.COMMON).maxCount(16).useCooldown(1.5f).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("reverted_ender_pearl")))));
-    public static final Item DEBUGGING_TOOL = registerItem("debugging_tool",new Debugging_Tool(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("debugging_tool")))));
-    public static final Item XP_NEEDLE = registerItem("xp_needle",new XP_Needle(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("xp_needle")))));
+    public static final Item DEBUGGING_TOOL = registerItem("debugging_tool",new Debugging_Tool(new Item.Settings().rarity(Rarity.EPIC).maxCount(1).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("debugging_tool")))));
+    public static final Item XP_NEEDLE = registerItem("xp_needle",new XP_Needle(new Item.Settings().maxDamage(64).rarity(Rarity.UNCOMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM,DEE_Main.id("xp_needle")))));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM,DEE_Main.id(name),item);

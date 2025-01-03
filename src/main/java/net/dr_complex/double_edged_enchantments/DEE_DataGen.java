@@ -2,7 +2,6 @@ package net.dr_complex.double_edged_enchantments;
 
 import net.dr_complex.double_edged_enchantments.datagen.*;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
-import net.dr_complex.double_edged_enchantments.other.DEE_Trims;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
@@ -23,8 +22,6 @@ public class DEE_DataGen implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
-		registryBuilder.addRegistry(RegistryKeys.TRIM_MATERIAL, DEE_Trims::bootstrapM);
-		registryBuilder.addRegistry(RegistryKeys.TRIM_PATTERN, DEE_Trims::bootstrapP);
 		registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, DEE_Enchantments::bootstrap);
 	}
 }

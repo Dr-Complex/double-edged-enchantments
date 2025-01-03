@@ -19,7 +19,7 @@ public record Curse_Resonating() implements EnchantmentEntityEffect {
         if(context.owner() != null){
             LivingEntity living = context.owner();
             int rng = world.random.nextBetween(1,15);
-            if(living.getMovement().length() > 0.1){
+            if(living.getMovement().length() > 0.1 && world.random.nextBetween(1,4) < level){
                 if(rng == 1) world.emitGameEvent(user, GameEvent.RESONATE_1,pos);
                 if(rng == 2) world.emitGameEvent(user, GameEvent.RESONATE_2,pos);
                 if(rng == 3) world.emitGameEvent(user, GameEvent.RESONATE_3,pos);
@@ -35,7 +35,6 @@ public record Curse_Resonating() implements EnchantmentEntityEffect {
                 if(rng == 13) world.emitGameEvent(user, GameEvent.RESONATE_13,pos);
                 if(rng == 14) world.emitGameEvent(user, GameEvent.RESONATE_14,pos);
                 if(rng == 15) world.emitGameEvent(user, GameEvent.RESONATE_15,pos);
-                living.playSound(SoundEvents.BLOCK_ANVIL_DESTROY,1,0);
             }
         }
     }

@@ -24,6 +24,6 @@
   "slots": [
     "any"
   ],
-  "supported_items": "#double_edged_enchantments:tools",
+  "supported_items": "#minecraft:enchantable/mining",
   "weight": 1
 }

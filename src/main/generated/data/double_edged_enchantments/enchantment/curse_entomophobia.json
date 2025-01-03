@@ -28,24 +28,29 @@
         "affected": "victim",
         "effect": {
           "type": "minecraft:apply_mob_effect",
-          "max_amplifier": 3.0,
+          "max_amplifier": {
+            "type": "minecraft:linear",
+            "base": 1.0,
+            "per_level_above_first": 1.0
+          },
           "max_duration": {
             "type": "minecraft:linear",
-            "base": 1.5,
-            "per_level_above_first": 0.5
+            "base": 40.0,
+            "per_level_above_first": 15.0
           },
-          "min_amplifier": 3.0,
-          "min_duration": 1.5,
+          "min_amplifier": {
+            "type": "minecraft:linear",
+            "base": 0.0,
+            "per_level_above_first": 1.0
+          },
+          "min_duration": {
+            "type": "minecraft:linear",
+            "base": 30.0,
+            "per_level_above_first": 10.0
+          },
           "to_apply": "minecraft:infested"
         },
-        "enchanted": "attacker",
-        "requirements": {
-          "condition": "minecraft:entity_properties",
-          "entity": "this",
-          "predicate": {
-            "type": "#minecraft:arthropod"
-          }
-        }
+        "enchanted": "attacker"
       }
     ]
   },

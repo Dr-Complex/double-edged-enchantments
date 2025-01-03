@@ -2,11 +2,14 @@
   "required": true,
   "package": "net.dr_complex.double_edged_enchantments.mixin",
   "compatibilityLevel": "JAVA_21",
-  "client": [
-    "ExampleMixin",
-    "PlayerRangeMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "mixins": [
+    "AttributeModifierMixin",
+    "DrowningReworkMixin",
+    "ItemStackRarityMaker",
+    "LossLootTable",
+    "Return_ItemStack_Mixin"
+  ]
 }

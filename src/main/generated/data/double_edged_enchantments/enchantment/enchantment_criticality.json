@@ -33,7 +33,6 @@
     "base": 2,
     "per_level_above_first": 2
   },
-  "primary_items": "#minecraft:swords",
   "slots": [
     "mainhand"
   ],

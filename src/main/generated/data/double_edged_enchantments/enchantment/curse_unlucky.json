@@ -4,11 +4,16 @@
     "translate": "enchantment.double_edged_enchantments.curse_unlucky"
   },
   "effects": {
-    "minecraft:tick": [
+    "minecraft:attributes": [
       {
-        "effect": {
-          "type": "double_edged_enchantments:enchantment_unlucky"
-        }
+        "amount": {
+          "type": "minecraft:linear",
+          "base": -1.0,
+          "per_level_above_first": -1.25
+        },
+        "attribute": "minecraft:luck",
+        "id": "double_edged_enchantments:curse_unlucky",
+        "operation": "add_value"
       }
     ]
   },
@@ -16,7 +21,7 @@
     "base": 50,
     "per_level_above_first": 0
   },
-  "max_level": 3,
+  "max_level": 5,
   "min_cost": {
     "base": 25,
     "per_level_above_first": 0
