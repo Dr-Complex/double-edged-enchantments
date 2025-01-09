@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -13,7 +14,7 @@ public class DEE_RegistryDataGen extends FabricDynamicRegistryProvider {
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
+    protected void configure(RegistryWrapper.@NotNull WrapperLookup registries, @NotNull Entries entries) {
         entries.addAll(registries.getOrThrow(RegistryKeys.TRIM_MATERIAL));
         entries.addAll(registries.getOrThrow(RegistryKeys.TRIM_PATTERN));
         entries.addAll(registries.getOrThrow(RegistryKeys.ENCHANTMENT));

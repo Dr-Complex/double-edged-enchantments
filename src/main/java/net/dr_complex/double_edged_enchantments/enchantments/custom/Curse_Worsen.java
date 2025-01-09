@@ -4,19 +4,29 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.enchantment.EnchantmentEffectContext;
 import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 
-public record Curse_Unlucky() implements EnchantmentEntityEffect {
+public record Curse_Worsen() implements EnchantmentEntityEffect {
 
-    public static final MapCodec<Curse_Unlucky> CODEC = MapCodec.unit(Curse_Unlucky::new);
+    public static float Exp = 0;
+    public static float PrevExp = 0;
+
+    public static final MapCodec<Curse_Worsen> CODEC =MapCodec.unit(Curse_Worsen::new);
 
     @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
         if(context.owner() != null){
-            context.owner().addStatusEffect(new StatusEffectInstance(StatusEffects.UNLUCK, 30, level - 1));
+            if(context.owner() instanceof PlayerEntity player){
+                Exp = player.experienceProgress;
+                if(PrevExp != Exp){
+                    Exp = PrevExp;
+                    context.stack().damage(level,player);
+                }
+                player.experienceProgress = Exp;
+                PrevExp = player.experienceProgress;
+            }
         }
     }
 

@@ -2,9 +2,9 @@ package net.dr_complex.double_edged_enchantments;
 
 import net.dr_complex.double_edged_enchantments.block.DEE_Blocks;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantment_Effects;
-import net.dr_complex.double_edged_enchantments.other.DEE_DataComponentTypes;
 import net.dr_complex.double_edged_enchantments.item.DEE_ItemGroup;
 import net.dr_complex.double_edged_enchantments.item.DEE_Items;
+import net.dr_complex.double_edged_enchantments.other.DEE_DataComponentTypes;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Contract;

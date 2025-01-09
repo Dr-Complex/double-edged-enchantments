@@ -7,7 +7,7 @@
     "minecraft:tick": [
       {
         "effect": {
-          "type": "double_edged_enchantments:enchantment_stones"
+          "type": "double_edged_enchantments:curse_stones"
         }
       }
     ]

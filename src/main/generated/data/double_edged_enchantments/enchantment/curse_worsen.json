@@ -1,13 +1,13 @@
 {
   "anvil_cost": 1,
   "description": {
-    "translate": "enchantment.double_edged_enchantments.curse_resonating"
+    "translate": "enchantment.double_edged_enchantments.curse_worsen"
   },
   "effects": {
     "minecraft:tick": [
       {
         "effect": {
-          "type": "double_edged_enchantments:curse_resonating"
+          "type": "double_edged_enchantments:curse_worsen"
         }
       }
     ]
@@ -16,14 +16,14 @@
     "base": 50,
     "per_level_above_first": 0
   },
-  "max_level": 3,
+  "max_level": 1,
   "min_cost": {
     "base": 25,
     "per_level_above_first": 0
   },
   "slots": [
-    "armor"
+    "any"
   ],
-  "supported_items": "#minecraft:enchantable/leg_armor",
+  "supported_items": "#minecraft:enchantable/durability",
   "weight": 1
 }

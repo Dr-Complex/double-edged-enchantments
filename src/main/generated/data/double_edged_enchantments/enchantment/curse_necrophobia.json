@@ -31,16 +31,16 @@
           "max_amplifier": 1.0,
           "max_duration": {
             "type": "minecraft:linear",
-            "base": 10.0,
-            "per_level_above_first": 25.0
+            "base": 5.0,
+            "per_level_above_first": 7.5
           },
-          "min_amplifier": 1.0,
+          "min_amplifier": 0.0,
           "min_duration": {
             "type": "minecraft:linear",
-            "base": 10.0,
-            "per_level_above_first": 10.0
+            "base": 5.0,
+            "per_level_above_first": 2.5
           },
-          "to_apply": "minecraft:strength"
+          "to_apply": "minecraft:speed"
         },
         "enchanted": "attacker",
         "requirements": {

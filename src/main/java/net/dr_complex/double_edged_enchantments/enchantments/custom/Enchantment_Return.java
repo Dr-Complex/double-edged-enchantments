@@ -1,7 +1,6 @@
 package net.dr_complex.double_edged_enchantments.enchantments.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
 import net.minecraft.enchantment.EnchantmentEffectContext;
 import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
@@ -9,10 +8,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.include.com.google.common.base.Objects;
 
 import java.util.ArrayList;
@@ -20,7 +17,7 @@ import java.util.List;
 
 public record Enchantment_Return() implements EnchantmentEntityEffect {
 
-    public static ArrayList<ItemStack> returnable = new ArrayList<ItemStack>(64);
+    public static ArrayList<ItemStack> returnable = new ArrayList<>(64);
     private static int cooldown = 25;
     public static final MapCodec<Enchantment_Return> CODEC = MapCodec.unit(Enchantment_Return::new);
 

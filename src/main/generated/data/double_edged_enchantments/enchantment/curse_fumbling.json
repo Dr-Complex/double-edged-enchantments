@@ -7,7 +7,7 @@
     "minecraft:tick": [
       {
         "effect": {
-          "type": "double_edged_enchantments:enchantment_fumbling"
+          "type": "double_edged_enchantments:curse_fumbling"
         }
       }
     ]

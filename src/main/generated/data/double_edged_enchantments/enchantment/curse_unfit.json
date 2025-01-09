@@ -1,19 +1,19 @@
 {
   "anvil_cost": 1,
   "description": {
-    "translate": "enchantment.double_edged_enchantments.curse_jupiter"
+    "translate": "enchantment.double_edged_enchantments.curse_unfit"
   },
   "effects": {
     "minecraft:attributes": [
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 0.18,
-          "per_level_above_first": 0.18
+          "base": -0.75,
+          "per_level_above_first": -0.75
         },
-        "attribute": "minecraft:gravity",
-        "id": "double_edged_enchantments:curse_jupiter",
-        "operation": "add_multiplied_total"
+        "attribute": "minecraft:double_edged_enchantments.water_movement_efficiency",
+        "id": "double_edged_enchantments:curse_unfit",
+        "operation": "add_value"
       }
     ]
   },

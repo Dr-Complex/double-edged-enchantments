@@ -1,6 +1,5 @@
 package net.dr_complex.double_edged_enchantments.mixin;
 
-import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -31,8 +30,8 @@ public abstract class LossLootTable {
         if (!world.isClient) {
             if (!tool.getEnchantments().isEmpty()) {
                 List<String> enchantments = tool.getEnchantments().getEnchantments().stream().map(RegistryEntry::getIdAsString).toList();
-                for (int i = 0; i < enchantments.size(); i++) {
-                    if (Objects.equals(enchantments.get(i), DEE_Enchantments.CURSE_LOSS.getValue().toString())){
+                for (String enchantment : enchantments) {
+                    if (Objects.equals(enchantment, DEE_Enchantments.CURSE_LOSS.getValue().toString())) {
                         getDroppedStacks(state, (ServerWorld) world, pos, blockEntity, entity, tool).forEach(stack -> dropStack(world, pos, ItemStack.EMPTY));
                         state.onStacksDropped((ServerWorld) world, pos, tool, false);
                         ci.cancel();

@@ -1,13 +1,13 @@
 {
   "anvil_cost": 1,
   "description": {
-    "translate": "enchantment.double_edged_enchantments.curse_resonating"
+    "translate": "enchantment.double_edged_enchantments.curse_tides"
   },
   "effects": {
     "minecraft:tick": [
       {
         "effect": {
-          "type": "double_edged_enchantments:curse_resonating"
+          "type": "double_edged_enchantments:curse_tides"
         }
       }
     ]
@@ -22,8 +22,8 @@
     "per_level_above_first": 0
   },
   "slots": [
-    "armor"
+    "hand"
   ],
-  "supported_items": "#minecraft:enchantable/leg_armor",
+  "supported_items": "#minecraft:enchantable/trident",
   "weight": 1
 }

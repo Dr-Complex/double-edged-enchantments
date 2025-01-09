@@ -6,10 +6,13 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "ArrowTrailMixin",
     "AttributeModifierMixin",
-    "DrowningReworkMixin",
+    "LivingMixin",
     "ItemStackRarityMaker",
+    "CrossbowMixin",
     "LossLootTable",
-    "Return_ItemStack_Mixin"
+    "Return_ItemStack_Mixin",
+    "StunnedMixin"
   ]
 }

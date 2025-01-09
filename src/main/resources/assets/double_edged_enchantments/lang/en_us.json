@@ -26,6 +26,14 @@
   "enchantment.double_edged_enchantments.curse_necrophobia": "Curse of Necrophobia",
   "enchantment.double_edged_enchantments.curse_ashes": "Curse of Ashes",
   "enchantment.double_edged_enchantments.curse_drowning": "Curse of Drowning",
+  "enchantment.double_edged_enchantments.curse_hidden": "Curse of Hidden",
+  "enchantment.double_edged_enchantments.curse_stunned": "Curse of Stunned",
+  "enchantment.double_edged_enchantments.curse_softness": "Curse of Softness",
+  "enchantment.double_edged_enchantments.curse_tides": "Curse of Tides",
+  "enchantment.double_edged_enchantments.curse_vulnerability": "Curse of Vulnerability",
+  "enchantment.double_edged_enchantments.curse_nudge": "Curse of Nudge",
+  "enchantment.double_edged_enchantments.curse_flammable": "Curse of Flammable",
+  "enchantment.double_edged_enchantments.curse_smoke": "Curse of Smoke",
 
 
   "enchantment.double_edged_enchantments.enchantment_lucky": "Lucky",
@@ -35,6 +43,7 @@
   "enchantment.double_edged_enchantments.enchantment_revealing": "Revealing",
 
   "enchantment.double_edged_enchantments.neutral_magic_growth": "Growth",
-  "enchantment.double_edged_enchantments.neutral_magic_shrunken": "Shrunken"
+  "enchantment.double_edged_enchantments.neutral_magic_shrunken": "Shrunken",
 
+  "death.attack.curse_backlash": "%1$s was Cursed to death"
 }

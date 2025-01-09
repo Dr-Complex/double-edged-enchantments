@@ -1,18 +1,18 @@
 {
   "anvil_cost": 1,
   "description": {
-    "translate": "enchantment.double_edged_enchantments.curse_jupiter"
+    "translate": "enchantment.double_edged_enchantments.curse_flammable"
   },
   "effects": {
     "minecraft:attributes": [
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 0.18,
-          "per_level_above_first": 0.18
+          "base": 0.25,
+          "per_level_above_first": 0.25
         },
-        "attribute": "minecraft:gravity",
-        "id": "double_edged_enchantments:curse_jupiter",
+        "attribute": "minecraft:burning_time",
+        "id": "double_edged_enchantments:curse_flammable",
         "operation": "add_multiplied_total"
       }
     ]
@@ -21,14 +21,14 @@
     "base": 50,
     "per_level_above_first": 0
   },
-  "max_level": 5,
+  "max_level": 4,
   "min_cost": {
     "base": 25,
     "per_level_above_first": 0
   },
   "slots": [
-    "feet"
+    "armor"
   ],
-  "supported_items": "#minecraft:enchantable/foot_armor",
+  "supported_items": "#minecraft:enchantable/armor",
   "weight": 1
 }

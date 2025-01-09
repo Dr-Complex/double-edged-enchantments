@@ -9,13 +9,15 @@ import net.minecraft.registry.Registry;
 
 public class DEE_Enchantment_Effects {
 
-    public static final MapCodec<? extends EnchantmentEntityEffect> ENCHANTMENT_LUCKY = registerEntityEffect("enchantment_lucky",Enchantment_Lucky.CODEC);
     public static final MapCodec<? extends EnchantmentEntityEffect> ENCHANTMENT_RETURN = registerEntityEffect("enchantment_return", Enchantment_Return.CODEC);
 
-    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_FUMBLING = registerEntityEffect("enchantment_fumbling", Curse_Fumbling.CODEC);
-    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_RESONATING = registerEntityEffect("enchantment_resonating", Curse_Resonating.CODEC);
-    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_UNLUCKY = registerEntityEffect("enchantment_unlucky", Curse_Unlucky.CODEC);
-    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_STONES = registerEntityEffect("enchantment_stones", Curse_Stones.CODEC);
+    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_FUMBLING = registerEntityEffect("curse_fumbling", Curse_Fumbling.CODEC);
+    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_RESONATING = registerEntityEffect("curse_resonating", Curse_Resonating.CODEC);
+    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_STONES = registerEntityEffect("curse_stones", Curse_Stones.CODEC);
+    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_TIDES = registerEntityEffect("curse_tides", Curse_Tides.CODEC);
+    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_WORSEN = registerEntityEffect("curse_worsen", Curse_Worsen.CODEC);
+
+    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_DAMAGE_BACKLASH = registerEntityEffect("curse_damage_backlash", CursedDamageBacklash.CODEC);
 
     public static void LoadEnchantmentEffects(){
         DEE_Main.LOGGER.info("Main reason for this mod is made");

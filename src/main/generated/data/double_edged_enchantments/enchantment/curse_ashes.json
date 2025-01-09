@@ -12,14 +12,14 @@
           "max_amplifier": 0.0,
           "max_duration": {
             "type": "minecraft:linear",
-            "base": 50.0,
-            "per_level_above_first": 50.0
+            "base": 20.0,
+            "per_level_above_first": 15.0
           },
           "min_amplifier": 0.0,
           "min_duration": {
             "type": "minecraft:linear",
-            "base": 30.0,
-            "per_level_above_first": 30.0
+            "base": 10.0,
+            "per_level_above_first": 15.0
           },
           "to_apply": "minecraft:blindness"
         },

@@ -3,6 +3,12 @@
     {
       "id": "#minecraft:curse",
       "required": false
-    }
+    },
+    {
+      "id": "#minecraft:in_enchanting_table",
+      "required": false
+    },
+    "double_edged_enchantments:enchantment_moon",
+    "double_edged_enchantments:enchantment_return"
   ]
 }

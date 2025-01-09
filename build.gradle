@@ -16,9 +16,6 @@ repositories {
 		url = "https://maven.terraformersmc.com/"
 	}
 
-	maven {
-		url "https://api.modrinth.com/maven"
-	}
 }
 
 fabricApi {
@@ -36,8 +33,6 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
-
-	modImplementation "maven.modrinth:necronomicon:${project.necronomicon_version}-fabric"
 }
 
 processResources {
@@ -68,20 +63,3 @@ jar {
 	}
 }
 
-// configure the maven publication
-publishing {
-	publications {
-		create("mavenJava", MavenPublication) {
-			artifactId = project.archives_base_name
-			from components.java
-		}
-	}
-
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
-	}
-}

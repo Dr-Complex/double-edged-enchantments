@@ -1,7 +1,6 @@
 package net.dr_complex.double_edged_enchantments.item.custom;
 
 import net.dr_complex.double_edged_enchantments.other.DEE_DataComponentTypes;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

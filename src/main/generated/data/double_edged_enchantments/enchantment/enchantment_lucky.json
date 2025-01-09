@@ -21,7 +21,7 @@
     "base": 2,
     "per_level_above_first": 5
   },
-  "max_level": 3,
+  "max_level": 5,
   "min_cost": {
     "base": 2,
     "per_level_above_first": 4

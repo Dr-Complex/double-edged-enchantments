@@ -20,6 +20,16 @@
     "double_edged_enchantments:curse_necrophobia",
     "double_edged_enchantments:curse_drowning",
     "double_edged_enchantments:curse_ashes",
-    "double_edged_enchantments:curse_hidden"
+    "double_edged_enchantments:curse_hidden",
+    "double_edged_enchantments:curse_tides",
+    "double_edged_enchantments:curse_flammable",
+    "double_edged_enchantments:curse_smoke",
+    "double_edged_enchantments:curse_nudge",
+    "double_edged_enchantments:curse_softness",
+    "double_edged_enchantments:curse_vulnerability",
+    "double_edged_enchantments:curse_stunned",
+    "double_edged_enchantments:curse_jamming",
+    "double_edged_enchantments:curse_unfit",
+    "double_edged_enchantments:curse_worsen"
   ]
 }

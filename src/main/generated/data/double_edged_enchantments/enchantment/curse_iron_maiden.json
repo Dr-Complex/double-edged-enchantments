@@ -8,37 +8,38 @@
       {
         "affected": "victim",
         "effect": {
-          "type": "minecraft:damage_entity",
-          "damage_type": "minecraft:cactus",
-          "max_damage": 15.0,
-          "min_damage": 5.0
-        },
-        "enchanted": "victim",
-        "requirements": {
-          "chance": {
-            "type": "minecraft:enchantment_level",
-            "amount": {
-              "type": "minecraft:linear",
-              "base": 0.25,
-              "per_level_above_first": 0.25
-            }
+          "type": "double_edged_enchantments:curse_damage_backlash",
+          "chance": 0.75,
+          "max": {
+            "type": "minecraft:linear",
+            "base": 1.5,
+            "per_level_above_first": 0.75
           },
-          "condition": "minecraft:random_chance"
-        }
+          "min": {
+            "type": "minecraft:linear",
+            "base": 1.0,
+            "per_level_above_first": 0.5
+          }
+        },
+        "enchanted": "victim"
       },
       {
         "affected": "victim",
         "effect": {
-          "type": "minecraft:damage_entity",
-          "damage_type": "minecraft:cactus",
-          "max_damage": 150.0,
-          "min_damage": 100.0
-        },
-        "enchanted": "victim",
-        "requirements": {
+          "type": "double_edged_enchantments:curse_damage_backlash",
           "chance": 0.001,
-          "condition": "minecraft:random_chance"
-        }
+          "max": {
+            "type": "minecraft:linear",
+            "base": 1000.0,
+            "per_level_above_first": 1000.0
+          },
+          "min": {
+            "type": "minecraft:linear",
+            "base": 1000.0,
+            "per_level_above_first": 100.0
+          }
+        },
+        "enchanted": "victim"
       }
     ]
   },

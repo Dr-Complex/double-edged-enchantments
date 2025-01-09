@@ -131,11 +131,11 @@ public abstract class ItemStackRarityMaker implements ComponentHolder, FabricIte
             mutableText.formatted(Formatting.ITALIC);
         }
 
-        if(this.contains(DEE_DataComponentTypes.RARITY_CONTAINER)){
-            if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) != null){
-                if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) == 1) mutableText.formatted(Formatting.GOLD);
-            }
+
+        if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) != null){
+            if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) == 1) mutableText.formatted(Formatting.GOLD);
         }
+
 
         if(this.hasEnchantments()) {
             var enchantments = this.getEnchantments().getEnchantments();
