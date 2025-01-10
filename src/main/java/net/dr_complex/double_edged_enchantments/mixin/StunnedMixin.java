@@ -58,7 +58,7 @@ public abstract class StunnedMixin extends LivingEntity{
             for (int i = 0; i < test1.size(); i++) {
                 if(test1.get(i).matches(test2)){
                     this.dataTracker.set(StunTime,
-                            level.get(i) * 25
+                            level.get(i) * 12
                     );
                 }
             }

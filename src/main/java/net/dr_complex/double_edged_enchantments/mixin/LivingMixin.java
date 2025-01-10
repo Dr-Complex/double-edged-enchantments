@@ -65,7 +65,6 @@ public abstract class LivingMixin extends Entity implements Attackable {
              Speed = Objects.requireNonNull(this.attributes.getCustomInstance(EntityAttributes.WATER_MOVEMENT_EFFICIENCY)).getValue();
         }else Speed = 0;
 
-        int Length = 5;
         boolean aBool = this.getVelocity().y <= 0.0;
         double Gravity = this.getEffectiveGravity();
 
@@ -77,10 +76,10 @@ public abstract class LivingMixin extends Entity implements Attackable {
                 Speed *= 0.5F;
             }
 
-            SprintingSpeed = (float) (1 - (0.5-(Speed/Length))*(SprintingSpeed-0.5));
+            SprintingSpeed = (float) (1 - (0.5-(Speed/6f))*(1 - SprintingSpeed));
 
             if(Speed > 0) {
-                ScaleSpeed += (float) ((this.getMovementSpeed() - ScaleSpeed) * (Speed/Length));
+                ScaleSpeed += (float) ((this.getMovementSpeed() - ScaleSpeed) * (Speed/6f));
             }
 
             if (this.hasStatusEffect(StatusEffects.DOLPHINS_GRACE)) {

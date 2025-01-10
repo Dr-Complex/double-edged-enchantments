@@ -1,5 +1,5 @@
 {
-  "anvil_cost": 1,
+  "anvil_cost": 2,
   "description": {
     "translate": "enchantment.double_edged_enchantments.curse_flammable"
   },
@@ -8,23 +8,23 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 0.25,
-          "per_level_above_first": 0.25
+          "base": 1.0,
+          "per_level_above_first": 0.5
         },
         "attribute": "minecraft:burning_time",
         "id": "double_edged_enchantments:curse_flammable",
-        "operation": "add_multiplied_total"
+        "operation": "add_value"
       }
     ]
   },
   "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
+    "base": 10,
+    "per_level_above_first": 2
   },
-  "max_level": 4,
+  "max_level": 10,
   "min_cost": {
-    "base": 25,
-    "per_level_above_first": 0
+    "base": 5,
+    "per_level_above_first": 2
   },
   "slots": [
     "armor"

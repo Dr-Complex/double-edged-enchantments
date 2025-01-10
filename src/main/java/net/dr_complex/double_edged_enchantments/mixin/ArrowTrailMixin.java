@@ -1,5 +1,6 @@
 package net.dr_complex.double_edged_enchantments.mixin;
 
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -22,11 +23,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ArrowEntity.class)
 public abstract class ArrowTrailMixin extends PersistentProjectileEntity {
+
+    @Unique
+    int level;
+
     @Unique
     private static final TrackedData<Boolean> IsSmoke = DataTracker.registerData(ArrowTrailMixin.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     @Unique
-    private int turn = 0;
+    private float turn = 0.0f;
 
     protected ArrowTrailMixin(EntityType<? extends PersistentProjectileEntity> entityType, World world) {
         super(entityType, world);
@@ -42,9 +47,10 @@ public abstract class ArrowTrailMixin extends PersistentProjectileEntity {
         if(shotFrom.hasEnchantments()){
             var test1 = shotFrom.getEnchantments().getEnchantments().stream().map(RegistryEntry::getIdAsString).toList();
             var test2 = DEE_Enchantments.CURSE_SMOKE.getValue().toString();
-            for (int i = 0; i < shotFrom.getEnchantments().getEnchantments().size(); i++) {
+            for (int i = 0; i < test1.size(); i++) {
                 if(test1.get(i).matches(test2)){
                     this.dataTracker.set(IsSmoke,true);
+                    this.level = shotFrom.getEnchantments().getEnchantmentEntries().stream().map(Object2IntMap.Entry::getIntValue).toList().get(i);
                 }
             }
         }
@@ -58,6 +64,7 @@ public abstract class ArrowTrailMixin extends PersistentProjectileEntity {
             for (int i = 0; i < shotFrom.getEnchantments().getEnchantments().size(); i++) {
                 if(test3.get(i).matches(test4)){
                     this.dataTracker.set(IsSmoke,true);
+                    this.level = shotFrom.getEnchantments().getEnchantmentEntries().stream().map(Object2IntMap.Entry::getIntValue).toList().get(i);
                 }
             }
         }
@@ -67,7 +74,7 @@ public abstract class ArrowTrailMixin extends PersistentProjectileEntity {
     private void spawnParticles(CallbackInfo ci) {
         if(!this.getWorld().isClient){
             ci.cancel();
-        }else if(this.dataTracker.get(IsSmoke)){
+        }else if(this.dataTracker.get(IsSmoke) & this.getWorld().random.nextFloat() >= (float) 1 /this.level){
             if(!this.isInGround()){
                 this.getWorld().addParticle(
                         ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
@@ -77,7 +84,7 @@ public abstract class ArrowTrailMixin extends PersistentProjectileEntity {
                         0, 0.01f, 0
                 );
             }else {
-                this.turn += 15;
+                this.turn += 15.75f;
                 this.getWorld().addParticle(
                         ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
                         this.getParticleX(0.25),
@@ -86,7 +93,7 @@ public abstract class ArrowTrailMixin extends PersistentProjectileEntity {
                         -MathHelper.sin((this.turn * MathHelper.TAU) / 360.0f)/50f, 0.375f, MathHelper.cos((this.turn * MathHelper.TAU) / 360.0f)/50f
                 );
                 if(turn > 360){
-                    this.turn = 0;
+                    this.turn = 0.0f;
                 }
             }
         }

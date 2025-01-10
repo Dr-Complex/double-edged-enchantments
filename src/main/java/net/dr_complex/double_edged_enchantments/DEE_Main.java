@@ -1,5 +1,6 @@
 package net.dr_complex.double_edged_enchantments;
 
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.dr_complex.double_edged_enchantments.block.DEE_Blocks;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantment_Effects;
 import net.dr_complex.double_edged_enchantments.item.DEE_ItemGroup;
@@ -22,6 +23,7 @@ public class DEE_Main implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		MidnightConfig.init(MOD_ID, DEE_Configs.class);
 		DEE_ItemGroup.LoadItemGroups();
 		DEE_Items.LoadItems();
 		DEE_Blocks.LoadBlocks();

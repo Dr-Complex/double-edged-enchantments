@@ -1,5 +1,5 @@
 {
-  "anvil_cost": 1,
+  "anvil_cost": 2,
   "description": {
     "translate": "enchantment.double_edged_enchantments.enchantment_moon"
   },
@@ -8,23 +8,23 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": -0.14,
-          "per_level_above_first": -0.14
+          "base": 0.865,
+          "per_level_above_first": -0.085
         },
         "attribute": "minecraft:gravity",
         "id": "double_edged_enchantments:enchantment_moon",
-        "operation": "add_multiplied_total"
+        "operation": "add_multiplied_base"
       }
     ]
   },
   "max_cost": {
-    "base": 12,
-    "per_level_above_first": 5
-  },
-  "max_level": 5,
-  "min_cost": {
     "base": 10,
-    "per_level_above_first": 5
+    "per_level_above_first": 2
+  },
+  "max_level": 10,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 2
   },
   "slots": [
     "feet"

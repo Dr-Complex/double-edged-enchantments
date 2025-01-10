@@ -1,5 +1,5 @@
 {
-  "anvil_cost": 1,
+  "anvil_cost": 2,
   "description": {
     "translate": "enchantment.double_edged_enchantments.curse_entomophobia"
   },
@@ -10,8 +10,8 @@
           "type": "minecraft:add",
           "value": {
             "type": "minecraft:linear",
-            "base": -1.05,
-            "per_level_above_first": -1.05
+            "base": -0.625,
+            "per_level_above_first": -0.625
           }
         },
         "requirements": {
@@ -30,12 +30,12 @@
           "type": "minecraft:apply_mob_effect",
           "max_amplifier": {
             "type": "minecraft:linear",
-            "base": 1.0,
+            "base": 0.0,
             "per_level_above_first": 1.0
           },
           "max_duration": {
             "type": "minecraft:linear",
-            "base": 40.0,
+            "base": 30.0,
             "per_level_above_first": 15.0
           },
           "min_amplifier": {
@@ -45,7 +45,7 @@
           },
           "min_duration": {
             "type": "minecraft:linear",
-            "base": 30.0,
+            "base": 10.0,
             "per_level_above_first": 10.0
           },
           "to_apply": "minecraft:infested"
@@ -55,17 +55,18 @@
     ]
   },
   "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
+    "base": 10,
+    "per_level_above_first": 2
   },
-  "max_level": 5,
+  "max_level": 10,
   "min_cost": {
-    "base": 25,
-    "per_level_above_first": 0
+    "base": 5,
+    "per_level_above_first": 2
   },
+  "primary_items": "#minecraft:enchantable/sword",
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:enchantable/weapon",
+  "supported_items": "#minecraft:enchantable/sharp_weapon",
   "weight": 1
 }

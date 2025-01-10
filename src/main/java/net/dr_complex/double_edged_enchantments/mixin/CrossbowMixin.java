@@ -66,12 +66,10 @@ public abstract class CrossbowMixin extends RangedWeaponItem {
         if(stack.hasEnchantments() && !world.isClient){
             var enchantments = stack.getEnchantments().getEnchantments().stream().map(RegistryEntry::getIdAsString).toList();
             var CJamming = DEE_Enchantments.CURSE_JAMMING.getValue().toString();
-
-            var level = stack.getEnchantments().getEnchantmentEntries().stream().map(Object2IntMap.Entry::getIntValue).toList();
             for (int j = 0; j< enchantments.size(); j++) {
                 if (Objects.equals(enchantments.get(j), CJamming)) {
-                    jammed = world.random.nextFloat() >= ((float) 1 /level.get(j));
-                    Level = level.get(j);
+                    Level = stack.getEnchantments().getEnchantmentEntries().stream().map(Object2IntMap.Entry::getIntValue).toList().get(j);
+                    jammed = world.random.nextFloat() >= ((float) 1 /Level);
                 }
             }
         }

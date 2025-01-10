@@ -1,5 +1,5 @@
 {
-  "anvil_cost": 4,
+  "anvil_cost": 2,
   "description": {
     "translate": "enchantment.minecraft.depth_strider"
   },
@@ -11,7 +11,7 @@
           "base": 1,
           "per_level_above_first": 0.45
         },
-        "attribute": "minecraft:double_edged_enchantments.water_movement_efficiency",
+        "attribute": "minecraft:water_movement_efficiency",
         "id": "minecraft:enchantment.depth_strider",
         "operation": "add_value"
       }
@@ -19,13 +19,13 @@
   },
   "exclusive_set": "#minecraft:exclusive_set/boots",
   "max_cost": {
-    "base": 12,
-    "per_level_above_first": 3
+    "base": 10,
+    "per_level_above_first": 2
   },
-  "max_level": 5,
+  "max_level": 10,
   "min_cost": {
-    "base": 8,
-    "per_level_above_first": 3
+    "base": 5,
+    "per_level_above_first": 2
   },
   "slots": [
     "feet"

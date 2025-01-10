@@ -21,6 +21,9 @@
 		],
 		"client": [
 			"net.dr_complex.double_edged_enchantments.DEE_Client"
+		],
+		"modmenu": [
+			"net.dr_complex.double_edged_enchantments.DEE_ConfigScreen"
 		]
 	},
 	"mixins": [
@@ -30,14 +33,13 @@
 		"fabricloader": ">=0.16.9",
 		"minecraft": "~1.21.4",
 		"java": ">=21",
-		"fabric-api": "*",
-		"yet_another_config_lib_v3": ">=3.6.2+1.21.4-fabric"
+		"fabric-api": "*"
 	},
 	"suggests": {
 		"another-mod": "*"
 	},"custom": {
 	"modmenu": {
-		"badges": [ "library", "deprecated" ],
+		"badges": [ "server" ],
 		"parent": {
 			"id": "double-edged-enchantments",
 			"name": "Double Edged Enchantments",

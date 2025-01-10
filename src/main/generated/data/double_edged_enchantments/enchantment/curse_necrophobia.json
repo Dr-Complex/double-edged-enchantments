@@ -1,5 +1,5 @@
 {
-  "anvil_cost": 1,
+  "anvil_cost": 2,
   "description": {
     "translate": "enchantment.double_edged_enchantments.curse_necrophobia"
   },
@@ -10,8 +10,8 @@
           "type": "minecraft:add",
           "value": {
             "type": "minecraft:linear",
-            "base": -1.1,
-            "per_level_above_first": -1.1
+            "base": -1.75,
+            "per_level_above_first": -1.25
           }
         },
         "requirements": {
@@ -31,14 +31,14 @@
           "max_amplifier": 1.0,
           "max_duration": {
             "type": "minecraft:linear",
-            "base": 5.0,
-            "per_level_above_first": 7.5
+            "base": 0.5,
+            "per_level_above_first": 1.25
           },
           "min_amplifier": 0.0,
           "min_duration": {
             "type": "minecraft:linear",
-            "base": 5.0,
-            "per_level_above_first": 2.5
+            "base": 0.5,
+            "per_level_above_first": 0.75
           },
           "to_apply": "minecraft:speed"
         },
@@ -54,13 +54,13 @@
     ]
   },
   "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
+    "base": 10,
+    "per_level_above_first": 2
   },
-  "max_level": 5,
+  "max_level": 10,
   "min_cost": {
-    "base": 25,
-    "per_level_above_first": 0
+    "base": 5,
+    "per_level_above_first": 2
   },
   "slots": [
     "mainhand"

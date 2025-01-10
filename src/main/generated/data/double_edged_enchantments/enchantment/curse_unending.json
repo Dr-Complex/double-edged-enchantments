@@ -1,5 +1,5 @@
 {
-  "anvil_cost": 1,
+  "anvil_cost": 2,
   "description": {
     "translate": "enchantment.double_edged_enchantments.curse_unending"
   },
@@ -8,22 +8,22 @@
       "type": "minecraft:add",
       "value": {
         "type": "minecraft:linear",
-        "base": 0.75,
-        "per_level_above_first": 0.5
+        "base": 0.325,
+        "per_level_above_first": 0.625
       }
     }
   },
   "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
+    "base": 10,
+    "per_level_above_first": 2
   },
-  "max_level": 3,
+  "max_level": 10,
   "min_cost": {
-    "base": 25,
-    "per_level_above_first": 0
+    "base": 5,
+    "per_level_above_first": 2
   },
   "slots": [
-    "mainhand"
+    "hand"
   ],
   "supported_items": "#minecraft:enchantable/crossbow",
   "weight": 1

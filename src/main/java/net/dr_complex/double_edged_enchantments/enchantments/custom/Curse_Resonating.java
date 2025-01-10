@@ -18,7 +18,7 @@ public record Curse_Resonating() implements EnchantmentEntityEffect {
         if(context.owner() != null){
             LivingEntity living = context.owner();
             int rng = world.random.nextBetween(1,15);
-            if(living.getMovement().length() > 0.1 && world.random.nextBetween(1,4) < level){
+            if(living.getMovement().length() > 0.1 && world.random.nextFloat() >= ((float) 1 /level)){
                 if(rng == 1) world.emitGameEvent(user, GameEvent.RESONATE_1,pos);
                 if(rng == 2) world.emitGameEvent(user, GameEvent.RESONATE_2,pos);
                 if(rng == 3) world.emitGameEvent(user, GameEvent.RESONATE_3,pos);

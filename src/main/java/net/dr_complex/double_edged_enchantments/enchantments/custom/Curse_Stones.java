@@ -17,7 +17,7 @@ public record Curse_Stones() implements EnchantmentEntityEffect {
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
         if(context.owner() != null){
             LivingEntity living = context.owner();
-            if(MathHelper.floorMod(living.fallDistance,10.0f) > 10 - level){
+            if(MathHelper.floorMod(living.fallDistance,15.0f) > 15 - level){
                 living.fallDistance += level/2f;
             }
         }

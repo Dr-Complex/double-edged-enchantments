@@ -45,5 +45,12 @@
   "enchantment.double_edged_enchantments.neutral_magic_growth": "Growth",
   "enchantment.double_edged_enchantments.neutral_magic_shrunken": "Shrunken",
 
-  "death.attack.curse_backlash": "%1$s was Cursed to death"
+  "death.attack.curse_backlash": "%1$s was Cursed to death",
+
+  "double_edged_enchantments.midnightconfig.title": "Double Edged Enchantments (D.E.E.)",
+  "double_edged_enchantments.midnightconfig.text1": "Text ? null",
+  "double_edged_enchantments.midnightconfig.modes": "D.E.E.'s Curse Mode",
+  "double_edged_enchantments.midnightconfig.enum.ModeEnum.original": " Original ",
+  "double_edged_enchantments.midnightconfig.enum.ModeEnum.half": " 50% ",
+  "double_edged_enchantments.midnightconfig.enum.ModeEnum.tt": "True Terror"
 }

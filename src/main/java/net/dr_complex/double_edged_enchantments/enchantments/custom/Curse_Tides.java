@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.consume.UseAction;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,7 +27,7 @@ public record Curse_Tides() implements EnchantmentEntityEffect {
                                 0,
                                 0,
                                 PositionFlag.VALUES,
-                                (world.random.nextFloat() - 0.5f) * (level * level),
+                                (world.random.nextFloat() - 0.5f) * MathHelper.sqrt(level * level + level * level),
                                 (world.random.nextFloat() - 0.5f) * (level),
                                 false);
                     }

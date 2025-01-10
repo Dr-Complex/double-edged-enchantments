@@ -1,5 +1,5 @@
 {
-  "anvil_cost": 1,
+  "anvil_cost": 2,
   "description": {
     "translate": "enchantment.double_edged_enchantments.curse_cruelness"
   },
@@ -15,8 +15,8 @@
             "type": "minecraft:enchantment_level",
             "amount": {
               "type": "minecraft:linear",
-              "base": -0.05,
-              "per_level_above_first": 0.15
+              "base": 0.144,
+              "per_level_above_first": 0.095
             }
           },
           "condition": "minecraft:random_chance"
@@ -25,17 +25,18 @@
     ]
   },
   "max_cost": {
-    "base": 50,
-    "per_level_above_first": 0
+    "base": 10,
+    "per_level_above_first": 2
   },
-  "max_level": 5,
+  "max_level": 10,
   "min_cost": {
-    "base": 25,
-    "per_level_above_first": 0
+    "base": 5,
+    "per_level_above_first": 2
   },
+  "primary_items": "#minecraft:enchantable/sword",
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:enchantable/weapon",
+  "supported_items": "#minecraft:enchantable/sharp_weapon",
   "weight": 1
 }

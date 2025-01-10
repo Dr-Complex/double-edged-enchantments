@@ -1,6 +1,6 @@
 plugins {
-	id 'fabric-loom' version '1.9-SNAPSHOT'
-	id 'maven-publish'
+	id "fabric-loom" version '1.9-SNAPSHOT'
+	id "com.modrinth.minotaur" version '2.+'
 }
 
 version = project.mod_version
@@ -16,6 +16,9 @@ repositories {
 		url = "https://maven.terraformersmc.com/"
 	}
 
+	maven {
+		url = "https://api.modrinth.com/maven"
+	}
 }
 
 fabricApi {
@@ -33,6 +36,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+	modImplementation include ("maven.modrinth:midnightlib:${project.midnightlib_version}")
 }
 
 processResources {
@@ -48,9 +52,6 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 java {
-	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-	// if it is present.
-	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
 	sourceCompatibility = JavaVersion.VERSION_21
@@ -63,3 +64,14 @@ jar {
 	}
 }
 
+modrinth {
+	token = System.getenv('Token')
+	projectId = 'double-edged-enchantments'
+	versionNumber = '0.0.1'
+	versionType = 'beta'
+	uploadFile = remapJar
+	gameVersions = ['1.21.4']
+	loaders = ['fabric']
+	dependencies{
+	}
+}
