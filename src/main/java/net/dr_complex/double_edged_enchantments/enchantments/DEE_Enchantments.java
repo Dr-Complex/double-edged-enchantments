@@ -2,6 +2,7 @@ package net.dr_complex.double_edged_enchantments.enchantments;
 
 import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.dr_complex.double_edged_enchantments.enchantments.custom.*;
+import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
@@ -39,6 +40,8 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> ENCHANTMENT_MOON = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_moon"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_RETURN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_return"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_REVEALING = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_revealing"));
+    public static final RegistryKey<Enchantment> ENCHANTMENT_ACCURATE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_accurate"));
+    public static final RegistryKey<Enchantment> ENCHANTMENT_AERODYNAMIC = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_aerodynamic"));
 
     public static final RegistryKey<Enchantment> CURSE_UNLUCKY = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_unlucky"));
     public static final RegistryKey<Enchantment> CURSE_CRUELNESS = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_cruelness"));
@@ -64,13 +67,19 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> CURSE_SMOKE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_smoke"));
     public static final RegistryKey<Enchantment> CURSE_FLAMMABLE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_flammable"));
     public static final RegistryKey<Enchantment> CURSE_TIDES = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_tides"));
-    public static final RegistryKey<Enchantment> CURSE_NUDGE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_nudge"));
+    public static final RegistryKey<Enchantment> CURSE_HOOK = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_hook"));
     public static final RegistryKey<Enchantment> CURSE_VULNERABILITY  = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_vulnerability"));
     public static final RegistryKey<Enchantment> CURSE_SOFTNESS = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_softness"));
     public static final RegistryKey<Enchantment> CURSE_STUNNED = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_stunned"));
     public static final RegistryKey<Enchantment> CURSE_UNFIT = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_unfit"));
     public static final RegistryKey<Enchantment> CURSE_JAMMING = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_jamming"));
     public static final RegistryKey<Enchantment> CURSE_WORSEN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_worsen"));
+    public static final RegistryKey<Enchantment> CURSE_CONSUMPTION = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_consumption"));
+    public static final RegistryKey<Enchantment> CURSE_VACUUM = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_vacuum"));
+    public static final RegistryKey<Enchantment> CURSE_SPREAD = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_spread"));
+    public static final RegistryKey<Enchantment> CURSE_DRAG = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_drag"));
+    public static final RegistryKey<Enchantment> CURSE_WEIGHTLESSNESS = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_weightlessness"));
+    public static final RegistryKey<Enchantment> CURSE_REDIRECT = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_redirect"));
 
     public static final RegistryKey<Enchantment> NM_GROWTH = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("neutral_magic_growth"));
     public static final RegistryKey<Enchantment> NM_SHRUNKEN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("neutral_magic_shrunken"));
@@ -204,7 +213,7 @@ public class DEE_Enchantments {
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,
                 new AttributeEnchantmentEffect(DEE_Main.id("curse_narrow"),
                         EntityAttributes.SWEEPING_DAMAGE_RATIO,
-                        EnchantmentLevelBasedValue.linear(0.3375f,0.0625f),
+                        EnchantmentLevelBasedValue.linear(-0.3375f,-0.0625f),
                         EntityAttributeModifier.Operation.ADD_VALUE)
                 )
         );
@@ -282,8 +291,8 @@ public class DEE_Enchantments {
                         Enchantment.leveledCost(5,2),
                         Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(DEE_Main.id("enchantment_moon"),
-                EntityAttributes.GRAVITY,EnchantmentLevelBasedValue.linear(0.865f,-0.085f),
-                EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE))
+                EntityAttributes.GRAVITY,EnchantmentLevelBasedValue.linear(-0.015f,-0.005f),
+                EntityAttributeModifier.Operation.ADD_VALUE))
         );
 
         register(registerable,CURSE_JUPITER, Enchantment.builder(Enchantment.definition(
@@ -292,8 +301,8 @@ public class DEE_Enchantments {
                         Enchantment.leveledCost(5,2),
                         Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(DEE_Main.id("curse_jupiter"),
-                EntityAttributes.GRAVITY,EnchantmentLevelBasedValue.linear(1.05f,0.05f),
-                EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL))
+                EntityAttributes.GRAVITY,EnchantmentLevelBasedValue.linear(0.0125f,0.0075f),
+                EntityAttributeModifier.Operation.ADD_VALUE))
         );
 
         register(registerable, ENCHANTMENT_RETURN,Enchantment.builder(Enchantment.definition(
@@ -440,17 +449,24 @@ public class DEE_Enchantments {
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.HAND
         )).addEffect(EnchantmentEffectComponentTypes.TICK,new Curse_Tides()));
 
-        register(registerable,CURSE_NUDGE,Enchantment.builder(Enchantment.definition(
+        register(registerable,CURSE_HOOK,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.BOW_ENCHANTABLE),
                         1,10,
                         Enchantment.leveledCost(5,2),
                         Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.KNOCKBACK,
-                new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.75f,-2.25f)),
-                EntityPropertiesLootCondition.builder(
-                        LootContext.EntityTarget.DIRECT_ATTACKER,
-                        net.minecraft.predicate.entity.EntityPredicate.Builder.create().type(entityTypeLookup, EntityTypeTags.ARROWS).build()
-                ))
+                new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.05f,-0.125f)))
+        );
+
+        register(registerable,CURSE_VACUUM,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
+                itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        1,10,
+                        Enchantment.leveledCost(5,2),
+                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )).addEffect(EnchantmentEffectComponentTypes.KNOCKBACK,
+                new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.05f,-0.125f)))
         );
 
         register(registerable,CURSE_VULNERABILITY,Enchantment.builder(Enchantment.definition(
@@ -493,7 +509,7 @@ public class DEE_Enchantments {
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES, new AttributeEnchantmentEffect(
                 DEE_Main.id("curse_unfit"),EntityAttributes.WATER_MOVEMENT_EFFICIENCY,
-                EnchantmentLevelBasedValue.linear(-0.75f,-0.75f), EntityAttributeModifier.Operation.ADD_VALUE
+                EnchantmentLevelBasedValue.linear(-0.085f,-0.09625f), EntityAttributeModifier.Operation.ADD_VALUE
         )));
 
         register(registerable,CURSE_JAMMING, Enchantment.builder(Enchantment.definition(
@@ -510,7 +526,56 @@ public class DEE_Enchantments {
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ANY
         )).addEffect(EnchantmentEffectComponentTypes.TICK,new Curse_Worsen()));
 
+        register(registerable,CURSE_CONSUMPTION,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE),
+                itemsLookup.getOrThrow(ItemTags.BOW_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )));
 
+        register(registerable, ENCHANTMENT_ACCURATE,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(DEE_Tags.Items.SHOOT_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_SPREAD,new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-3.75f,-4.25f))));
+
+        register(registerable,CURSE_SPREAD,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(DEE_Tags.Items.SHOOT_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_SPREAD,new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(2.5f,1.5f))));
+
+
+        register(registerable,ENCHANTMENT_AERODYNAMIC,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(DEE_Tags.Items.SHOOT_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )));
+
+        register(registerable,CURSE_DRAG,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(DEE_Tags.Items.SHOOT_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )));
+
+        register(registerable,CURSE_WEIGHTLESSNESS,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.MACE_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )).addEffect(EnchantmentEffectComponentTypes.SMASH_DAMAGE_PER_FALLEN_BLOCK,new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.2f,-0.67f))));
+
+        register(registerable,CURSE_REDIRECT,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.CROSSBOW_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_PIERCING,new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(1f))));
     }
 
     private static void register(@NotNull Registerable<Enchantment> registerable, RegistryKey<Enchantment> key, Enchantment.@NotNull Builder builder){

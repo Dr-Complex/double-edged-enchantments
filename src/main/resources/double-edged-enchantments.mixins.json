@@ -6,13 +6,19 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ArrowTrailMixin",
+    "ArrowEntityMixin",
     "AttributeModifierMixin",
-    "LivingMixin",
-    "ItemStackRarityMaker",
     "CrossbowMixin",
+    "EnchantmentHelperMixin",
+    "ItemStackRarityMaker",
+    "LivingMixin",
     "LossLootTable",
-    "Return_ItemStack_Mixin",
+    "MobMixin",
+    "PersistentProjectileEntityMixin",
+    "PlayerMixin",
+    "RangedWeaponItemMixin",
+    "RangedWeaponMixin",
+    "ReturnItemStackMixin",
     "StunnedMixin"
   ]
 }

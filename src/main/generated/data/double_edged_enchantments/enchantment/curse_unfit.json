@@ -8,8 +8,8 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": -0.75,
-          "per_level_above_first": -0.75
+          "base": -0.085,
+          "per_level_above_first": -0.09625
         },
         "attribute": "minecraft:double_edged_enchantments.water_movement_efficiency",
         "id": "double_edged_enchantments:curse_unfit",

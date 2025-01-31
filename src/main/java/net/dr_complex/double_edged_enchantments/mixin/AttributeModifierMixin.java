@@ -26,7 +26,7 @@ public abstract class AttributeModifierMixin {
 
     @Shadow
     public static final RegistryEntry<EntityAttribute> WATER_MOVEMENT_EFFICIENCY = register(
-            "double_edged_enchantments.water_movement_efficiency", new ClampedEntityAttribute("attribute.name.water_movement_efficiency", 0.0, -256.0, 255.0).setTracked(true)
+            "double_edged_enchantments.water_movement_efficiency", new ClampedEntityAttribute("attribute.name.water_movement_efficiency", 0.0, -1.0, 1.0).setTracked(true)
     );
 
 }

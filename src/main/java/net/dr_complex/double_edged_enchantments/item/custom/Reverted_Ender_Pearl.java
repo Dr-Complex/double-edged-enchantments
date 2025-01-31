@@ -13,6 +13,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +32,7 @@ public class Reverted_Ender_Pearl extends Item {
         if (itemStack.get(DEE_DataComponentTypes.POS_CONTAINER) != null) {
             if (!world.isClient) {
                 if (!user.isSneaking()) {
-                    user.teleport((ServerWorld) world, itemStack.get(DEE_DataComponentTypes.POS_CONTAINER).getX() + 0.5d, itemStack.get(DEE_DataComponentTypes.POS_CONTAINER).getY() + 1.2d, itemStack.get(DEE_DataComponentTypes.POS_CONTAINER).getZ() + 0.5d, HashSet.newHashSet(1), user.headYaw, user.prevPitch, false);
+                    user.teleport((ServerWorld) world, itemStack.get(DEE_DataComponentTypes.POS_CONTAINER).getX(), itemStack.get(DEE_DataComponentTypes.POS_CONTAINER).getY(), itemStack.get(DEE_DataComponentTypes.POS_CONTAINER).getZ(), HashSet.newHashSet(1), user.headYaw, user.prevPitch, false);
                     itemStack.decrementUnlessCreative(1, user);
                     return ActionResult.CONSUME;
                 } else {
@@ -44,9 +46,14 @@ public class Reverted_Ender_Pearl extends Item {
                         world.addParticle(ParticleTypes.PORTAL, user.getParticleX(0.25), user.getRandomBodyY(), user.getParticleZ(0.25), (user.getRandom().nextDouble() - 0.5d) * 2.0, 0, (user.getRandom().nextDouble() - 0.5d) * 2.0);
                     }
                 } else {
-                    world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_ENDER_EYE_LAUNCH, SoundCategory.PLAYERS, 0.25f, 0f);
+                    world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_ENDER_EYE_LAUNCH, SoundCategory.PLAYERS, 0.25f, 0.5f + 1/(world.random.nextFloat() + 1f));
                 }
                 return ActionResult.PASS;
+            }
+        }else {
+            if(user.isSneaking()){
+                itemStack.set(DEE_DataComponentTypes.POS_CONTAINER, user.getPos());
+                return ActionResult.SUCCESS;
             }
         }
         return ActionResult.FAIL;
@@ -55,7 +62,11 @@ public class Reverted_Ender_Pearl extends Item {
     @Override
     public void appendTooltip(@NotNull ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         if(stack.get(DEE_DataComponentTypes.POS_CONTAINER) != null){
-            tooltip.add(Text.literal(stack.get(DEE_DataComponentTypes.POS_CONTAINER).getX() + " , " + stack.get(DEE_DataComponentTypes.POS_CONTAINER).getY() + " , " + stack.get(DEE_DataComponentTypes.POS_CONTAINER).getZ()).formatted(Formatting.BOLD, Formatting.DARK_PURPLE));
+            double TpX = MathHelper.ceil(stack.get(DEE_DataComponentTypes.POS_CONTAINER).getX());
+            double TpY = MathHelper.ceil(stack.get(DEE_DataComponentTypes.POS_CONTAINER).getY());
+            double TpZ = MathHelper.ceil(stack.get(DEE_DataComponentTypes.POS_CONTAINER).getZ());
+            Vec3d PosXYZ = new Vec3d(TpX,TpY,TpZ);
+            tooltip.add(Text.of(PosXYZ.toString()).copy().formatted(Formatting.BOLD, Formatting.DARK_PURPLE));
         }
         super.appendTooltip(stack, context, tooltip, type);
     }

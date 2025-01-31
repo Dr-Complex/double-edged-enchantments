@@ -8,12 +8,12 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 0.865,
-          "per_level_above_first": -0.085
+          "base": -0.015,
+          "per_level_above_first": -0.005
         },
         "attribute": "minecraft:gravity",
         "id": "double_edged_enchantments:enchantment_moon",
-        "operation": "add_multiplied_base"
+        "operation": "add_value"
       }
     ]
   },

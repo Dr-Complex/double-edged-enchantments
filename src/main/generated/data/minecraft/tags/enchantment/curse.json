@@ -24,12 +24,18 @@
     "double_edged_enchantments:curse_tides",
     "double_edged_enchantments:curse_flammable",
     "double_edged_enchantments:curse_smoke",
-    "double_edged_enchantments:curse_nudge",
+    "double_edged_enchantments:curse_hook",
     "double_edged_enchantments:curse_softness",
     "double_edged_enchantments:curse_vulnerability",
     "double_edged_enchantments:curse_stunned",
     "double_edged_enchantments:curse_jamming",
     "double_edged_enchantments:curse_unfit",
-    "double_edged_enchantments:curse_worsen"
+    "double_edged_enchantments:curse_worsen",
+    "double_edged_enchantments:curse_consumption",
+    "double_edged_enchantments:curse_vacuum",
+    "double_edged_enchantments:curse_spread",
+    "double_edged_enchantments:curse_drag",
+    "double_edged_enchantments:curse_weightlessness",
+    "double_edged_enchantments:curse_redirect"
   ]
 }

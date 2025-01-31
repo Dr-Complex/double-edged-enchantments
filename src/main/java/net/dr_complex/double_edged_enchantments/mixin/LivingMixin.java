@@ -2,8 +2,10 @@ package net.dr_complex.double_edged_enchantments.mixin;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -40,6 +42,10 @@ public abstract class LivingMixin extends Entity implements Attackable {
 
     @Shadow public abstract float getMovementSpeed();
 
+    @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
+
+    @Shadow protected abstract float getKnockbackAgainst(Entity target, DamageSource damageSource);
+
     public LivingMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -60,9 +66,9 @@ public abstract class LivingMixin extends Entity implements Attackable {
 
     @Inject(method = "travelInFluid" ,at = @At("HEAD"), cancellable = true)
     private void ReworkedFluidSpeed(Vec3d movementInput, CallbackInfo ci){
-        double Speed;
+        float Speed;
         if(this.attributes.getCustomInstance(EntityAttributes.WATER_MOVEMENT_EFFICIENCY) != null){
-             Speed = Objects.requireNonNull(this.attributes.getCustomInstance(EntityAttributes.WATER_MOVEMENT_EFFICIENCY)).getValue();
+             Speed = (float) Objects.requireNonNull(this.attributes.getCustomInstance(EntityAttributes.WATER_MOVEMENT_EFFICIENCY)).getValue();
         }else Speed = 0;
 
         boolean aBool = this.getVelocity().y <= 0.0;
@@ -76,14 +82,14 @@ public abstract class LivingMixin extends Entity implements Attackable {
                 Speed *= 0.5F;
             }
 
-            SprintingSpeed = (float) (1 - (0.5-(Speed/6f))*(1 - SprintingSpeed));
+            SprintingSpeed += (Speed)/15f;
 
             if(Speed > 0) {
-                ScaleSpeed += (float) ((this.getMovementSpeed() - ScaleSpeed) * (Speed/6f));
+                ScaleSpeed = (this.getMovementSpeed() - ScaleSpeed) * Speed;
             }
 
             if (this.hasStatusEffect(StatusEffects.DOLPHINS_GRACE)) {
-                SprintingSpeed *= 1.15F;
+                SprintingSpeed += 0.0439f;
             }
 
             this.updateVelocity(ScaleSpeed, movementInput);
@@ -94,7 +100,7 @@ public abstract class LivingMixin extends Entity implements Attackable {
                 vec3d = new Vec3d(vec3d.x, 0.2f, vec3d.z);
             }
 
-            vec3d = vec3d.multiply(SprintingSpeed, 0.8f, SprintingSpeed);
+            vec3d = vec3d.multiply(SprintingSpeed, SprintingSpeed/1.75f, SprintingSpeed);
             this.setVelocity(this.applyFluidMovingSpeed(Gravity, aBool, vec3d));
 
         } else if(this.getWorld().isClient){
@@ -116,6 +122,25 @@ public abstract class LivingMixin extends Entity implements Attackable {
         Vec3d vec3d2 = this.getVelocity();
         if (this.horizontalCollision && this.doesNotCollide(vec3d2.x, vec3d2.y + 0.6F - this.getY() + this.getY(), vec3d2.z)) {
             this.setVelocity(vec3d2.x, 0.3F, vec3d2.z);
+        }
+        ci.cancel();
+    }
+
+    @Inject(method = "takeKnockback", at = @At("HEAD"), cancellable = true)
+    private void ReworkedKnockBack(double strength, double x, double z, CallbackInfo ci){
+        LivingEntity living = (LivingEntity) (Object)this;
+        strength *= 1.0 - living.getAttributeValue(EntityAttributes.KNOCKBACK_RESISTANCE);
+        if (strength != 0.0) {
+            this.velocityDirty = true;
+            Vec3d vec3d = this.getVelocity();
+
+            while (x * x + z * z < 1.0E-5F) {
+                x = (Math.random() - Math.random()) * 0.01;
+                z = (Math.random() - Math.random()) * 0.01;
+            }
+
+            Vec3d vec3d2 = new Vec3d(x, 0.0, z).normalize().multiply(strength);
+            this.setVelocity(vec3d.x / 2.0 - vec3d2.x, this.isOnGround() ? Math.min(0.4, vec3d.y / 2.0 + strength) : vec3d.y, vec3d.z / 2.0 - vec3d2.z);
         }
         ci.cancel();
     }

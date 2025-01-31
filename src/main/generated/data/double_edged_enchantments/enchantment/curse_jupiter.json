@@ -8,12 +8,12 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 1.05,
-          "per_level_above_first": 0.05
+          "base": 0.0125,
+          "per_level_above_first": 0.0075
         },
         "attribute": "minecraft:gravity",
         "id": "double_edged_enchantments:curse_jupiter",
-        "operation": "add_multiplied_total"
+        "operation": "add_value"
       }
     ]
   },

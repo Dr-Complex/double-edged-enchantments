@@ -19,10 +19,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -32,6 +34,8 @@ public abstract class CrossbowMixin extends RangedWeaponItem {
     public CrossbowMixin(Settings settings) {
         super(settings);
     }
+
+    @Unique private boolean jammed = false;
 
     @Shadow private boolean loaded;
     @Shadow private boolean charged;
@@ -61,22 +65,21 @@ public abstract class CrossbowMixin extends RangedWeaponItem {
     public void use(World world, @NotNull PlayerEntity user, Hand hand, CallbackInfoReturnable<ActionResult> cir){
         ItemStack stack = user.getStackInHand(hand);
         ChargedProjectilesComponent chargedProjectilesComponent = stack.get(DataComponentTypes.CHARGED_PROJECTILES);
-        boolean jammed = false;
-        int Level = 0;
+        int Level;
         if(stack.hasEnchantments() && !world.isClient){
-            var enchantments = stack.getEnchantments().getEnchantments().stream().map(RegistryEntry::getIdAsString).toList();
-            var CJamming = DEE_Enchantments.CURSE_JAMMING.getValue().toString();
+            List<String> enchantments = stack.getEnchantments().getEnchantments().stream().map(RegistryEntry::getIdAsString).toList();
+            String CJamming = DEE_Enchantments.CURSE_JAMMING.getValue().toString();
             for (int j = 0; j< enchantments.size(); j++) {
                 if (Objects.equals(enchantments.get(j), CJamming)) {
                     Level = stack.getEnchantments().getEnchantmentEntries().stream().map(Object2IntMap.Entry::getIntValue).toList().get(j);
-                    jammed = world.random.nextFloat() >= ((float) 1 /Level);
+                    this.jammed = world.random.nextFloat() > ((float) 1/Level);
                 }
             }
         }
-        if (chargedProjectilesComponent != null && !chargedProjectilesComponent.isEmpty() && !jammed) {
-            this.shootAll(world, user, hand, stack, getSpeed(chargedProjectilesComponent), 10.0F, null);
+        if (chargedProjectilesComponent != null && !chargedProjectilesComponent.isEmpty() && !this.jammed) {
+            this.shootAll(world, user, hand, stack, getSpeed(chargedProjectilesComponent), 1.0f, null);
             cir.setReturnValue(ActionResult.CONSUME);
-        } else if (!user.getProjectileType(stack).isEmpty()) {
+        } else if (!user.getProjectileType(stack).isEmpty() && Objects.requireNonNull(chargedProjectilesComponent).isEmpty()) {
             this.charged = false;
             this.loaded = false;
             user.setCurrentHand(hand);

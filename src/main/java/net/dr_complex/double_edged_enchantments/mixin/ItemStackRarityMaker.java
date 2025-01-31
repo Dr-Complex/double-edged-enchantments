@@ -133,7 +133,7 @@ public abstract class ItemStackRarityMaker implements ComponentHolder, FabricIte
 
 
         if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) != null){
-            if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) == 1){
+            if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) >= 5){
                 mutableText.formatted(Formatting.GREEN);
             }
         }

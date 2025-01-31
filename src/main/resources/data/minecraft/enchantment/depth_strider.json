@@ -8,10 +8,10 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 1,
-          "per_level_above_first": 0.45
+          "base": 0.085,
+          "per_level_above_first": 0.0935
         },
-        "attribute": "minecraft:water_movement_efficiency",
+        "attribute": "minecraft:double_edged_enchantments.water_movement_efficiency",
         "id": "minecraft:enchantment.depth_strider",
         "operation": "add_value"
       }

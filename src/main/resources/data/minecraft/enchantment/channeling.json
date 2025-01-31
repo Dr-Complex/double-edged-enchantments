@@ -108,6 +108,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:enchantable/trident",
+  "supported_items": "minecraft:trident",
   "weight": 1
 }

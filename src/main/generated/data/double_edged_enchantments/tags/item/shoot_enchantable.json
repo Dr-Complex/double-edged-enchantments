@@ -1,11 +1,8 @@
 {
   "values": [
+    "#double_edged_enchantments:arrow_shoot_enchantable",
     {
-      "id": "#minecraft:enchantable/crossbow",
-      "required": false
-    },
-    {
-      "id": "#minecraft:enchantable/bow",
+      "id": "#minecraft:enchantable/trident",
       "required": false
     }
   ]

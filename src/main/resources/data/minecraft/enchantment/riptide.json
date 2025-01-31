@@ -8,8 +8,8 @@
       "type": "minecraft:add",
       "value": {
         "type": "minecraft:linear",
-        "base": 1.5,
-        "per_level_above_first": 0.5
+        "base": 1,
+        "per_level_above_first": 0.75
       }
     }
   },
@@ -26,6 +26,6 @@
   "slots": [
     "hand"
   ],
-  "supported_items": "#minecraft:enchantable/trident",
+  "supported_items": "minecraft:trident",
   "weight": 2
 }

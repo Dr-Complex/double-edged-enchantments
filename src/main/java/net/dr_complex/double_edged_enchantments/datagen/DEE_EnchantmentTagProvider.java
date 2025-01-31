@@ -4,6 +4,7 @@ import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
 import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.EnchantmentTags;
 
@@ -41,29 +42,76 @@ public class DEE_EnchantmentTagProvider extends FabricTagProvider.EnchantmentTag
                .add(DEE_Enchantments.CURSE_TIDES)
                .add(DEE_Enchantments.CURSE_FLAMMABLE)
                .add(DEE_Enchantments.CURSE_SMOKE)
-               .add(DEE_Enchantments.CURSE_NUDGE)
+               .add(DEE_Enchantments.CURSE_HOOK)
                .add(DEE_Enchantments.CURSE_SOFTNESS)
                .add(DEE_Enchantments.CURSE_VULNERABILITY)
                .add(DEE_Enchantments.CURSE_STUNNED)
                .add(DEE_Enchantments.CURSE_JAMMING)
                .add(DEE_Enchantments.CURSE_UNFIT)
-               .add(DEE_Enchantments.CURSE_WORSEN);
+               .add(DEE_Enchantments.CURSE_WORSEN)
+               .add(DEE_Enchantments.CURSE_CONSUMPTION)
+               .add(DEE_Enchantments.CURSE_VACUUM)
+               .add(DEE_Enchantments.CURSE_SPREAD)
+               .add(DEE_Enchantments.CURSE_DRAG)
+               .add(DEE_Enchantments.CURSE_WEIGHTLESSNESS)
+               .add(DEE_Enchantments.CURSE_REDIRECT);
 
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
                 .add(DEE_Enchantments.ENCHANTMENT_LUCKY)
                 .add(DEE_Enchantments.ENCHANTMENT_CRITICALITY)
                 .add(DEE_Enchantments.ENCHANTMENT_REVEALING)
                 .add(DEE_Enchantments.NM_SHRUNKEN)
-                .add(DEE_Enchantments.NM_GROWTH);
-
-        getOrCreateTagBuilder(EnchantmentTags.ON_RANDOM_LOOT)
-                .addOptionalTag(EnchantmentTags.CURSE)
-                .addOptionalTag(EnchantmentTags.IN_ENCHANTING_TABLE)
-                .add(DEE_Enchantments.ENCHANTMENT_MOON)
-                .add(DEE_Enchantments.ENCHANTMENT_RETURN);
-
-        getOrCreateTagBuilder(DEE_Tags.Enchantments.NEUTRAL_MAGIC)
                 .add(DEE_Enchantments.NM_GROWTH)
-                .add(DEE_Enchantments.NM_SHRUNKEN);
+                .add(DEE_Enchantments.ENCHANTMENT_ACCURATE)
+                .add(DEE_Enchantments.ENCHANTMENT_AERODYNAMIC);
+
+        getOrCreateTagBuilder(DEE_Tags.Enchantments.ALL_GOOD)
+                .add(Enchantments.WIND_BURST)
+                .add(Enchantments.UNBREAKING)
+                .add(Enchantments.THORNS)
+                .add(Enchantments.SWIFT_SNEAK)
+                .add(Enchantments.SWEEPING_EDGE)
+                .add(Enchantments.SOUL_SPEED)
+                .add(Enchantments.SMITE)
+                .add(Enchantments.SILK_TOUCH)
+                .add(Enchantments.SHARPNESS)
+                .add(Enchantments.RIPTIDE)
+                .add(Enchantments.RESPIRATION)
+                .add(Enchantments.QUICK_CHARGE)
+                .add(Enchantments.PUNCH)
+                .add(Enchantments.PROTECTION)
+                .add(Enchantments.PROJECTILE_PROTECTION)
+                .add(Enchantments.POWER)
+                .add(Enchantments.PIERCING)
+                .add(Enchantments.MULTISHOT)
+                .add(Enchantments.MENDING)
+                .add(Enchantments.LURE)
+                .add(Enchantments.LUCK_OF_THE_SEA)
+                .add(Enchantments.LOYALTY)
+                .add(Enchantments.LOOTING)
+                .add(Enchantments.KNOCKBACK)
+                .add(Enchantments.INFINITY)
+                .add(Enchantments.IMPALING)
+                .add(Enchantments.FROST_WALKER)
+                .add(Enchantments.FORTUNE)
+                .add(Enchantments.FLAME)
+                .add(Enchantments.FIRE_PROTECTION)
+                .add(Enchantments.FEATHER_FALLING)
+                .add(Enchantments.EFFICIENCY)
+                .add(Enchantments.DEPTH_STRIDER)
+                .add(Enchantments.DENSITY)
+                .add(Enchantments.BREACH)
+                .add(Enchantments.BLAST_PROTECTION)
+                .add(Enchantments.BANE_OF_ARTHROPODS)
+                .add(Enchantments.AQUA_AFFINITY)
+                .add(DEE_Enchantments.NM_GROWTH)
+                .add(DEE_Enchantments.NM_SHRUNKEN)
+                .add(DEE_Enchantments.ENCHANTMENT_CRITICALITY)
+                .add(DEE_Enchantments.ENCHANTMENT_AERODYNAMIC)
+                .add(DEE_Enchantments.ENCHANTMENT_LUCKY)
+                .add(DEE_Enchantments.ENCHANTMENT_ACCURATE)
+                .add(DEE_Enchantments.ENCHANTMENT_MOON)
+                .add(DEE_Enchantments.ENCHANTMENT_REVEALING)
+                .add(DEE_Enchantments.ENCHANTMENT_RETURN);
     }
 }

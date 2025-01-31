@@ -30,16 +30,18 @@
 		"double-edged-enchantments.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.9",
+		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.21.4",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"modmenu": ">=13.0.0",
+		"midnightlib": ">=1.6.6-fabric"
 	},
 	"suggests": {
 		"another-mod": "*"
 	},"custom": {
 	"modmenu": {
-		"badges": [ "server" ],
+		"badges": [],
 		"parent": {
 			"id": "double-edged-enchantments",
 			"name": "Double Edged Enchantments",

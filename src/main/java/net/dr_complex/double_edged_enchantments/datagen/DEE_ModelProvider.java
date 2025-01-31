@@ -16,6 +16,7 @@ public class DEE_ModelProvider extends FabricModelProvider {
         super(output);
     }
 
+
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
 
@@ -23,12 +24,13 @@ public class DEE_ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(@NotNull ItemModelGenerator itemModelGenerator) {
-        ItemModel.Unbaked unbakedFalse = ItemModels.basic(ModelIds.getItemModelId(DEE_Items.XP_NEEDLE));
-        ItemModel.Unbaked unbakedTrue = ItemModels.basic(ModelIds.getItemSubModelId(DEE_Items.XP_NEEDLE,"_empty"));
+
+        ItemModel.Unbaked unbakedFalse = ItemModels.basic(ModelIds.getItemModelId(DEE_Items.EXP_NEEDLE));
+        ItemModel.Unbaked unbakedTrue = ItemModels.basic(ModelIds.getItemSubModelId(DEE_Items.EXP_NEEDLE,"_empty"));
         BooleanProperty Condition = new DamagedProperty();
 
-        itemModelGenerator.registerCondition( DEE_Items.XP_NEEDLE, Condition, unbakedTrue, unbakedFalse);
+        itemModelGenerator.registerCondition( DEE_Items.EXP_NEEDLE, Condition, unbakedTrue, unbakedFalse);
         itemModelGenerator.register(DEE_Items.REVERED_ENDER_PEARL, Models.GENERATED);
-        itemModelGenerator.register(DEE_Items.DEBUGGING_TOOL, Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.COPPER_NUGGET,Models.GENERATED);
     }
 }

@@ -2,7 +2,7 @@
 
   "item_group.double_edged_enchantments.dee_group": "Double Edged enchantments",
 
-  "item.double_edged_enchantments.xp_needle": "XP Needle",
+  "item.double_edged_enchantments.exp_needle": "Exp Needle",
   "item.double_edged_enchantments.reverted_ender_pearl": "Reverted Ender Pearl",
   "item.double_edged_enchantments.debugging_tool": "Debugging Tool",
 
@@ -34,13 +34,20 @@
   "enchantment.double_edged_enchantments.curse_nudge": "Curse of Nudge",
   "enchantment.double_edged_enchantments.curse_flammable": "Curse of Flammable",
   "enchantment.double_edged_enchantments.curse_smoke": "Curse of Smoke",
-
+  "enchantment.double_edged_enchantments.curse_unfit": "Curse of Unfit",
+  "enchantment.double_edged_enchantments.curse_consumption": "Curse of Consumption",
+  "enchantment.double_edged_enchantments.curse_vacuum": "Curse of Vacuum",
+  "enchantment.double_edged_enchantments.curse_worsen": "Curse of Worsen",
+  "enchantment.double_edged_enchantments.curse_jamming": "Curse of Jamming",
+  "enchantment.double_edged_enchantments.curse_hook": "Curse of Hook",
+  "enchantment.double_edged_enchantments.curse_spread": "Curse of Spread",
 
   "enchantment.double_edged_enchantments.enchantment_lucky": "Lucky",
   "enchantment.double_edged_enchantments.enchantment_criticality": "Criticality",
   "enchantment.double_edged_enchantments.enchantment_moon": "Moon",
   "enchantment.double_edged_enchantments.enchantment_return": "Return",
   "enchantment.double_edged_enchantments.enchantment_revealing": "Revealing",
+  "enchantment.double_edged_enchantments.enchantment_accurate": "Accurate",
 
   "enchantment.double_edged_enchantments.neutral_magic_growth": "Growth",
   "enchantment.double_edged_enchantments.neutral_magic_shrunken": "Shrunken",

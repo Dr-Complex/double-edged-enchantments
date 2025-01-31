@@ -13,7 +13,6 @@ public class DEE_DataGen implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(DEE_BlockTagProvider::new);
 		pack.addProvider(DEE_ItemTagProvider::new);
-		pack.addProvider(DEE_RecipeProvider::new);
 		pack.addProvider(DEE_ModelProvider::new);
 		pack.addProvider(DEE_LootProvider::new);
 		pack.addProvider(DEE_RegistryDataGen::new);

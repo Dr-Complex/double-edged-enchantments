@@ -1,5 +1,6 @@
 package net.dr_complex.double_edged_enchantments.datagen;
 
+import net.dr_complex.double_edged_enchantments.item.DEE_Items;
 import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -15,8 +16,21 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(DEE_Tags.Items.SHOOT_ENCHANTABLE)
+        getOrCreateTagBuilder(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE)
                 .addOptionalTag(ItemTags.CROSSBOW_ENCHANTABLE)
                 .addOptionalTag(ItemTags.BOW_ENCHANTABLE);
+
+        getOrCreateTagBuilder(ItemTags.TRIDENT_ENCHANTABLE)
+                .add(DEE_Items.WOODEN_SPEAR)
+                .add(DEE_Items.STONE_SPEAR)
+                .add(DEE_Items.GOLDEN_SPEAR)
+                .add(DEE_Items.COPPER_SPEAR)
+                .add(DEE_Items.IRON_SPEAR)
+                .add(DEE_Items.DIAMOND_SPEAR)
+                .add(DEE_Items.NETHERITE_SPEAR);
+
+        getOrCreateTagBuilder(DEE_Tags.Items.SHOOT_ENCHANTABLE)
+                .addTag(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE)
+                .addOptionalTag(ItemTags.TRIDENT_ENCHANTABLE);
     }
 }
