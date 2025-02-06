@@ -24,7 +24,6 @@ public class DEE_Main implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		MidnightConfig.init(MOD_ID, DEE_Configs.class);
 		DEE_ItemGroup.LoadItemGroups();
 		DEE_Items.LoadItems();
 		DEE_Blocks.LoadBlocks();

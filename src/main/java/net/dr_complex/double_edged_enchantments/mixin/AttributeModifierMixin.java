@@ -18,6 +18,10 @@ public abstract class AttributeModifierMixin {
         return Registry.registerReference(Registries.ATTRIBUTE, Identifier.ofVanilla(id), attribute);
     }
 
+    @Shadow
+    public static final RegistryEntry<EntityAttribute> EXPLOSION_KNOCKBACK_RESISTANCE = register(
+            "double_edged_enchantments.explosion_knockback_resistance",new ClampedEntityAttribute("attribute.name.explosion_knockback_resistance",0.0f,-1.0f,1.0f).setTracked(true)
+    );
 
     @Shadow
     public static final RegistryEntry<EntityAttribute> OXYGEN_BONUS = register(

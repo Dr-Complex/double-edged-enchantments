@@ -10,19 +10,23 @@ import net.minecraft.enchantment.EnchantmentLevelBasedValue;
 import net.minecraft.enchantment.effect.AttributeEnchantmentEffect;
 import net.minecraft.enchantment.effect.EnchantmentEffectTarget;
 import net.minecraft.enchantment.effect.entity.ApplyMobEffectEnchantmentEffect;
+import net.minecraft.enchantment.effect.entity.SummonEntityEnchantmentEffect;
 import net.minecraft.enchantment.effect.value.AddEnchantmentEffect;
 import net.minecraft.enchantment.effect.value.RemoveBinomialEnchantmentEffect;
 import net.minecraft.enchantment.effect.value.SetEnchantmentEffect;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.loot.condition.*;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.provider.number.EnchantmentLevelLootNumberProvider;
+import net.minecraft.predicate.FluidPredicate;
 import net.minecraft.predicate.TagPredicate;
 import net.minecraft.predicate.entity.DamageSourcePredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.entity.EntityTypePredicate;
+import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -80,6 +84,10 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> CURSE_DRAG = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_drag"));
     public static final RegistryKey<Enchantment> CURSE_WEIGHTLESSNESS = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_weightlessness"));
     public static final RegistryKey<Enchantment> CURSE_REDIRECT = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_redirect"));
+    public static final RegistryKey<Enchantment> CURSE_IMPLOSION = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_implosion"));
+    public static final RegistryKey<Enchantment> CURSE_MISFORTUNE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_misfortune"));
+    public static final RegistryKey<Enchantment> CURSE_DEEP = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_deep"));
+    public static final RegistryKey<Enchantment> CURSE_EVAPORATION = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_evaporation"));
 
     public static final RegistryKey<Enchantment> NM_GROWTH = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("neutral_magic_growth"));
     public static final RegistryKey<Enchantment> NM_SHRUNKEN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("neutral_magic_shrunken"));
@@ -240,7 +248,7 @@ public class DEE_Enchantments {
                 )));
 
         register(registerable, CURSE_LOSS, Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.MINING_ENCHANTABLE),
+                itemsLookup.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
                         1,10,
                         Enchantment.leveledCost(5,2),
                         Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
@@ -534,7 +542,7 @@ public class DEE_Enchantments {
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )));
 
-        register(registerable, ENCHANTMENT_ACCURATE,Enchantment.builder(Enchantment.definition(
+        register(registerable,ENCHANTMENT_ACCURATE,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(DEE_Tags.Items.SHOOT_ENCHANTABLE),
                 1,10,
                 Enchantment.leveledCost(5,2),
@@ -576,6 +584,63 @@ public class DEE_Enchantments {
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_PIERCING,new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(1f))));
+
+        register(registerable,CURSE_IMPLOSION,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
+        )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.VICTIM,EnchantmentEffectTarget.VICTIM,
+                new CursedDamageBacklash(
+                        EnchantmentLevelBasedValue.linear(0.75f,0.5f),
+                        EnchantmentLevelBasedValue.linear(1.5f,0.75f),
+                        1.0f
+                ),DamageSourcePropertiesLootCondition.builder(
+                        DamageSourcePredicate.Builder.create().tag(TagPredicate.expected(DamageTypeTags.IS_EXPLOSION)).tag(TagPredicate.unexpected(DamageTypeTags.BYPASSES_INVULNERABILITY))
+                )
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,
+                new AttributeEnchantmentEffect(
+                        DEE_Main.id("curse_implosion"),
+                        EntityAttributes.EXPLOSION_KNOCKBACK_RESISTANCE,
+                        EnchantmentLevelBasedValue.linear(-0.0025F,-0.09975f),
+                        EntityAttributeModifier.Operation.ADD_VALUE
+                ))
+        );
+
+        register(registerable,CURSE_MISFORTUNE,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )));
+
+        register(registerable,CURSE_DEEP,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.TRIDENT_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.VICTIM, new SummonEntityEnchantmentEffect(
+                entityTypeLookup.getOrThrow(EntityTypeTags.AQUATIC),false
+                ),
+                new AnyOfLootCondition.Builder(
+                        LocationCheckLootCondition.builder(LocationPredicate.Builder.create().fluid(FluidPredicate.Builder.create().fluid(Fluids.WATER))),
+                        new AllOfLootCondition.Builder(
+                                LocationCheckLootCondition.builder(LocationPredicate.Builder.create().canSeeSky(true)),
+                                new AnyOfLootCondition.Builder(
+                                        new WeatherCheckLootCondition.Builder().raining(true),
+                                        new WeatherCheckLootCondition.Builder().thundering(true)
+                                        )
+                        )
+                )
+        ));
+
+        register(registerable,CURSE_EVAPORATION,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(5,2),2,AttributeModifierSlot.FEET
+        )).addEffect(EnchantmentEffectComponentTypes.TICK,new Curse_Evaporation()));
+
     }
 
     private static void register(@NotNull Registerable<Enchantment> registerable, RegistryKey<Enchantment> key, Enchantment.@NotNull Builder builder){

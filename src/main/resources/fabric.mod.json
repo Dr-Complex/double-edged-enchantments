@@ -21,9 +21,6 @@
 		],
 		"client": [
 			"net.dr_complex.double_edged_enchantments.DEE_Client"
-		],
-		"modmenu": [
-			"net.dr_complex.double_edged_enchantments.DEE_ConfigScreen"
 		]
 	},
 	"mixins": [

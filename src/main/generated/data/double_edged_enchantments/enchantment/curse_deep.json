@@ -1,34 +1,17 @@
 {
-  "description": {
-    "translate": "enchantment.minecraft.impaling"
-  },
-  "exclusive_set": "#minecraft:exclusive_set/damage",
-  "supported_items": "#minecraft:enchantable/trident",
-  "weight": 2,
-  "max_level": 10,
-  "min_cost": {
-    "base": 5,
-    "per_level_above_first": 2
-  },
-  "max_cost": {
-    "base": 10,
-    "per_level_above_first": 2
-  },
   "anvil_cost": 2,
-  "slots": [
-    "mainhand"
-  ],
+  "description": {
+    "translate": "enchantment.double_edged_enchantments.curse_deep"
+  },
   "effects": {
-    "minecraft:damage": [
+    "minecraft:post_attack": [
       {
+        "affected": "victim",
         "effect": {
-          "type": "minecraft:add",
-          "value": {
-            "type": "minecraft:linear",
-            "base": 3.25,
-            "per_level_above_first": 0.166
-          }
+          "type": "minecraft:summon_entity",
+          "entity": "#minecraft:aquatic"
         },
+        "enchanted": "attacker",
         "requirements": {
           "condition": "minecraft:any_of",
           "terms": [
@@ -36,7 +19,7 @@
               "condition": "minecraft:location_check",
               "predicate": {
                 "fluid": {
-                  "fluids": "#minecraft:water"
+                  "fluids": "minecraft:water"
                 }
               }
             },
@@ -68,5 +51,19 @@
         }
       }
     ]
-  }
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 2
+  },
+  "max_level": 10,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 2
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#minecraft:enchantable/trident",
+  "weight": 1
 }

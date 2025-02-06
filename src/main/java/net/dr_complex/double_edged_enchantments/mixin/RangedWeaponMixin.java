@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Unit;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class RangedWeaponMixin {
 
     @Inject(method = "getProjectile",at = @At("HEAD"), cancellable = true)
-    private static void ReworkedCloning(ItemStack stack, ItemStack projectileStack, LivingEntity shooter, boolean multishot, CallbackInfoReturnable<ItemStack> cir){
+    private static void ReworkedCloning(ItemStack stack, @NotNull ItemStack projectileStack, @NotNull LivingEntity shooter, boolean multishot, CallbackInfoReturnable<ItemStack> cir){
         int i = !shooter.isInCreativeMode() && shooter.getWorld() instanceof ServerWorld serverWorld
                 ? EnchantmentHelper.getAmmoUse(serverWorld, stack, projectileStack, 1)
                 : 0;

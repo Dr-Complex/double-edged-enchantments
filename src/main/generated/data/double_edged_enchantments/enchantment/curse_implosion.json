@@ -1,31 +1,39 @@
 {
   "anvil_cost": 2,
   "description": {
-    "translate": "enchantment.minecraft.blast_protection"
+    "translate": "enchantment.double_edged_enchantments.curse_implosion"
   },
   "effects": {
     "minecraft:attributes": [
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 0.05,
-          "per_level_above_first": 0.095
+          "base": -0.0025,
+          "per_level_above_first": -0.09975
         },
-        "attribute": "minecraft:explosion_knockback_resistance",
-        "id": "minecraft:enchantment.blast_protection",
+        "attribute": "minecraft:double_edged_enchantments.explosion_knockback_resistance",
+        "id": "double_edged_enchantments:curse_implosion",
         "operation": "add_value"
       }
     ],
-    "minecraft:damage_protection": [
+    "minecraft:post_attack": [
       {
+        "affected": "victim",
         "effect": {
-          "type": "minecraft:add",
-          "value": {
+          "type": "double_edged_enchantments:curse_damage_backlash",
+          "chance": 1.0,
+          "max": {
             "type": "minecraft:linear",
-            "base": 2.0,
-            "per_level_above_first": 2.0
+            "base": 1.5,
+            "per_level_above_first": 0.75
+          },
+          "min": {
+            "type": "minecraft:linear",
+            "base": 0.75,
+            "per_level_above_first": 0.5
           }
         },
+        "enchanted": "victim",
         "requirements": {
           "condition": "minecraft:damage_source_properties",
           "predicate": {
@@ -44,7 +52,6 @@
       }
     ]
   },
-  "exclusive_set": "#minecraft:exclusive_set/armor",
   "max_cost": {
     "base": 10,
     "per_level_above_first": 2
@@ -58,5 +65,5 @@
     "armor"
   ],
   "supported_items": "#minecraft:enchantable/armor",
-  "weight": 2
+  "weight": 1
 }

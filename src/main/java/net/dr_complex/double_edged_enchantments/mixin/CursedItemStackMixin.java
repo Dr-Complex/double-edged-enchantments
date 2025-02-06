@@ -36,7 +36,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
-public abstract class ItemStackRarityMaker implements ComponentHolder, FabricItemStack {
+public abstract class CursedItemStackMixin implements ComponentHolder, FabricItemStack {
 
     @Inject(method = "getTooltip",at = @At("HEAD"), cancellable = true)
     private void ShowToolTip(Item.TooltipContext context, @Nullable PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir){

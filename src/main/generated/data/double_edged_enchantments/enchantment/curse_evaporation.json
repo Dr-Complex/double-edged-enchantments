@@ -1,20 +1,19 @@
 {
   "anvil_cost": 2,
   "description": {
-    "translate": "enchantment.double_edged_enchantments.curse_loss"
+    "translate": "enchantment.double_edged_enchantments.curse_evaporation"
   },
   "effects": {
-    "minecraft:block_experience": [
+    "minecraft:tick": [
       {
         "effect": {
-          "type": "minecraft:set",
-          "value": 0.0
+          "type": "double_edged_enchantments:curse_evaporation"
         }
       }
     ]
   },
   "max_cost": {
-    "base": 10,
+    "base": 5,
     "per_level_above_first": 2
   },
   "max_level": 10,
@@ -23,8 +22,8 @@
     "per_level_above_first": 2
   },
   "slots": [
-    "mainhand"
+    "feet"
   ],
-  "supported_items": "#minecraft:enchantable/mining_loot",
+  "supported_items": "#minecraft:enchantable/foot_armor",
   "weight": 1
 }

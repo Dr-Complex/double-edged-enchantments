@@ -1,5 +1,9 @@
 {
   "values": [
+    {
+      "id": "#minecraft:enchantable/trident",
+      "required": false
+    },
     "double_edged_enchantments:wooden_spear",
     "double_edged_enchantments:stone_spear",
     "double_edged_enchantments:golden_spear",

@@ -1,17 +1,7 @@
 {
   "anvil_cost": 2,
   "description": {
-    "translate": "enchantment.double_edged_enchantments.curse_loss"
-  },
-  "effects": {
-    "minecraft:block_experience": [
-      {
-        "effect": {
-          "type": "minecraft:set",
-          "value": 0.0
-        }
-      }
-    ]
+    "translate": "enchantment.double_edged_enchantments.curse_misfortune"
   },
   "max_cost": {
     "base": 10,

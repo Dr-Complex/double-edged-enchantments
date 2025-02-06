@@ -4,7 +4,21 @@
 
   "item.double_edged_enchantments.exp_needle": "Exp Needle",
   "item.double_edged_enchantments.reverted_ender_pearl": "Reverted Ender Pearl",
-  "item.double_edged_enchantments.debugging_tool": "Debugging Tool",
+  "item.double_edged_enchantments.wooden_spear": "Wooden Spear",
+  "item.double_edged_enchantments.stone_spear": "Stone Spear",
+  "item.double_edged_enchantments.golden_spear": "Golden Spear",
+  "item.double_edged_enchantments.iron_spear": "Iron Spear",
+  "item.double_edged_enchantments.diamond_spear": "Diamond Spear",
+  "item.double_edged_enchantments.netherite_spear": "Netherite Spear",
+  "item.double_edged_enchantments.copper_spear": "Copper Spear",
+
+  "entity.double_edged_enchantments.wooden_spear_entity": "Wooden Spear",
+  "entity.double_edged_enchantments.stone_spear_entity": "Stone Spear",
+  "entity.double_edged_enchantments.golden_spear_entity": "Golden Spear",
+  "entity.double_edged_enchantments.iron_spear_entity": "Iron Spear",
+  "entity.double_edged_enchantments.diamond_spear_entity": "Diamond Spear",
+  "entity.double_edged_enchantments.netherite_spear_entity": "Netherite Spear",
+  "entity.double_edged_enchantments.copper_spear_entity": "Copper Spear",
 
   "enchantment.double_edged_enchantments.curse_entomophobia": "Curse of Entomophobia",
   "enchantment.double_edged_enchantments.curse_rebuilding": "Curse of Rebuilding",
@@ -41,6 +55,13 @@
   "enchantment.double_edged_enchantments.curse_jamming": "Curse of Jamming",
   "enchantment.double_edged_enchantments.curse_hook": "Curse of Hook",
   "enchantment.double_edged_enchantments.curse_spread": "Curse of Spread",
+  "enchantment.double_edged_enchantments.curse_drag": "Curse of Drag",
+  "enchantment.double_edged_enchantments.curse_weightlessness": "Curse of Weightlessness",
+  "enchantment.double_edged_enchantments.curse_redirect": "Curse of Redirect",
+  "enchantment.double_edged_enchantments.curse_implosion": "Curse of Implosion",
+  "enchantment.double_edged_enchantments.curse_misfortune": "Curse of Misfortune",
+  "enchantment.double_edged_enchantments.curse_deep": "Curse of Deep",
+  "enchantment.double_edged_enchantments.curse_evaporation": "Curse of Evaporation",
 
   "enchantment.double_edged_enchantments.enchantment_lucky": "Lucky",
   "enchantment.double_edged_enchantments.enchantment_criticality": "Criticality",
@@ -48,16 +69,15 @@
   "enchantment.double_edged_enchantments.enchantment_return": "Return",
   "enchantment.double_edged_enchantments.enchantment_revealing": "Revealing",
   "enchantment.double_edged_enchantments.enchantment_accurate": "Accurate",
+  "enchantment.double_edged_enchantments.enchantment_aerodynamic": "Aerodynamic",
 
   "enchantment.double_edged_enchantments.neutral_magic_growth": "Growth",
   "enchantment.double_edged_enchantments.neutral_magic_shrunken": "Shrunken",
 
-  "death.attack.curse_backlash": "%1$s was Cursed to death",
+  "tag.item.double_edged_enchantments.arrow_shoot_enchantable": "Arrow Shoot Enchantable",
+  "tag.item.double_edged_enchantments.shoot_enchantable": "Shoot Enchantable",
+  "tag.item.double_edged_enchantments.spear_weapon": "Spear Weapon",
+  "tag.enchantment.double_edged_enchantments.all_good": "GOOD",
 
-  "double_edged_enchantments.midnightconfig.title": "Double Edged Enchantments (D.E.E.)",
-  "double_edged_enchantments.midnightconfig.text1": "Text ? null",
-  "double_edged_enchantments.midnightconfig.modes": "D.E.E.'s Curse Mode",
-  "double_edged_enchantments.midnightconfig.enum.ModeEnum.original": " Original ",
-  "double_edged_enchantments.midnightconfig.enum.ModeEnum.half": " 50% ",
-  "double_edged_enchantments.midnightconfig.enum.ModeEnum.tt": "True Terror"
+  "death.attack.curse_backlash": "%1$s was Cursed to death"
 }

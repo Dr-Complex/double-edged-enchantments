@@ -19,6 +19,7 @@ public class DEE_Tags {
 
         public static final TagKey<Item> ARROW_SHOOT_ENCHANTABLE = itemTagKey("arrow_shoot_enchantable");
         public static final TagKey<Item> SHOOT_ENCHANTABLE = itemTagKey("shoot_enchantable");
+        public static final TagKey<Item> SPEAR_WEAPONS = itemTagKey("spear_weapon");
 
         private static TagKey<Item> itemTagKey(String name){
             return TagKey.of(RegistryKeys.ITEM,DEE_Main.id(name));
