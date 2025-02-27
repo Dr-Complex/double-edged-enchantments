@@ -6,35 +6,83 @@
   "effects": {
     "minecraft:hit_block": [
       {
-        "effect": {
-          "type": "minecraft:all_of",
-          "effects": [
-            {
-              "type": "minecraft:summon_entity",
-              "entity": "minecraft:lightning_bolt"
-            },
-            {
-              "type": "minecraft:play_sound",
-              "pitch": 1.0,
-              "sound": "minecraft:item.trident.thunder",
-              "volume": 5.0
-            }
-          ]
-        },
         "requirements": {
           "condition": "minecraft:all_of",
           "terms": [
             {
-              "condition": "minecraft:weather_check",
-              "thundering": true
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:weather_check",
+                  "thundering": true
+                },
+                {
+                  "condition": "minecraft:weather_check",
+                  "raining": true
+                }
+              ]
             },
             {
-              "condition": "minecraft:entity_properties",
-              "entity": "this",
+              "condition": "minecraft:location_check",
               "predicate": {
-                "type": "minecraft:trident"
+                "can_see_sky": true
               }
+            }
+          ]
+        },
+        "effect": {
+          "type": "minecraft:summon_entity",
+          "entity": "minecraft:lightning_bolt"
+        }
+      }
+    ],
+    "minecraft:post_attack": [
+      {
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:weather_check",
+                  "raining": true
+                },
+                {
+                  "condition": "minecraft:weather_check",
+                  "thundering": true
+                }
+              ]
             },
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "can_see_sky": true
+              }
+            }
+          ]
+        },
+        "effect": {
+          "type": "minecraft:damage_entity",
+          "damage_type": "minecraft:lightning_bolt",
+          "min_damage": {
+            "type": "minecraft:linear",
+            "base": 0.25,
+            "per_level_above_first": 0.5
+          },
+          "max_damage": {
+            "type": "minecraft:linear",
+            "base": 0.75,
+            "per_level_above_first": 1
+          }
+        },
+        "enchanted": "attacker",
+        "affected": "attacker"
+      },
+      {
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
             {
               "condition": "minecraft:location_check",
               "predicate": {
@@ -42,57 +90,26 @@
               }
             },
             {
-              "block": "minecraft:lightning_rod",
-              "condition": "minecraft:block_state_property"
-            }
-          ]
-        }
-      }
-    ],
-    "minecraft:post_attack": [
-      {
-        "affected": "victim",
-        "effect": {
-          "type": "minecraft:all_of",
-          "effects": [
-            {
-              "type": "minecraft:summon_entity",
-              "entity": "minecraft:lightning_bolt"
-            },
-            {
-              "type": "minecraft:play_sound",
-              "pitch": 1.0,
-              "sound": "minecraft:item.trident.thunder",
-              "volume": 5.0
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:weather_check",
+                  "thundering": true
+                },
+                {
+                  "condition": "minecraft:weather_check",
+                  "raining": true
+                }
+              ]
             }
           ]
         },
+        "effect": {
+          "type": "minecraft:summon_entity",
+          "entity": "minecraft:lightning_bolt"
+        },
         "enchanted": "attacker",
-        "requirements": {
-          "condition": "minecraft:all_of",
-          "terms": [
-            {
-              "condition": "minecraft:weather_check",
-              "thundering": true
-            },
-            {
-              "condition": "minecraft:entity_properties",
-              "entity": "this",
-              "predicate": {
-                "location": {
-                  "can_see_sky": true
-                }
-              }
-            },
-            {
-              "condition": "minecraft:entity_properties",
-              "entity": "direct_attacker",
-              "predicate": {
-                "type": "minecraft:trident"
-              }
-            }
-          ]
-        }
+        "affected": "damaging_entity"
       }
     ]
   },

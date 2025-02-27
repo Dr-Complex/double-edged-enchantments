@@ -46,6 +46,7 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> ENCHANTMENT_REVEALING = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_revealing"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_ACCURATE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_accurate"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_AERODYNAMIC = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_aerodynamic"));
+    public static final RegistryKey<Enchantment> ENCHANTMENT_ABSORBING = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("enchantment_absorbing"));
 
     public static final RegistryKey<Enchantment> CURSE_UNLUCKY = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_unlucky"));
     public static final RegistryKey<Enchantment> CURSE_CRUELNESS = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_cruelness"));
@@ -88,6 +89,7 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> CURSE_MISFORTUNE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_misfortune"));
     public static final RegistryKey<Enchantment> CURSE_DEEP = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_deep"));
     public static final RegistryKey<Enchantment> CURSE_EVAPORATION = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_evaporation"));
+    public static final RegistryKey<Enchantment> CURSE_CONDUCTIVENESS = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("curse_conductiveness"));
 
     public static final RegistryKey<Enchantment> NM_GROWTH = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("neutral_magic_growth"));
     public static final RegistryKey<Enchantment> NM_SHRUNKEN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Main.id("neutral_magic_shrunken"));
@@ -433,7 +435,7 @@ public class DEE_Enchantments {
         );
 
         register(registerable,CURSE_SMOKE, Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.BOW_ENCHANTABLE),
+                itemsLookup.getOrThrow(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE),
                 1,10,
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
@@ -491,7 +493,7 @@ public class DEE_Enchantments {
         ));
 
         register(registerable,CURSE_SOFTNESS,Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.BOW_ENCHANTABLE),
+                itemsLookup.getOrThrow(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE),
                         1,10,
                         Enchantment.leveledCost(5,2),
                         Enchantment.leveledCost(10,2),2, AttributeModifierSlot.MAINHAND
@@ -640,6 +642,47 @@ public class DEE_Enchantments {
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(5,2),2,AttributeModifierSlot.FEET
         )).addEffect(EnchantmentEffectComponentTypes.TICK,new Curse_Evaporation()));
+
+        register(registerable,CURSE_CONDUCTIVENESS,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.TRIDENT_ENCHANTABLE),
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+        )).addEffect(EnchantmentEffectComponentTypes.HIT_BLOCK,
+                                new Curse_Conductiveness(),
+                        new AllOfLootCondition.Builder(
+                                LocationCheckLootCondition.builder(LocationPredicate.Builder.create().canSeeSky(true)),
+                                new AnyOfLootCondition.Builder(
+                                        new WeatherCheckLootCondition.Builder().raining(true),
+                                        new WeatherCheckLootCondition.Builder().thundering(true))
+                )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,
+                        EnchantmentEffectTarget.ATTACKER,
+                        EnchantmentEffectTarget.VICTIM,
+                        new Curse_Conductiveness(),
+                        new AllOfLootCondition.Builder(
+                                LocationCheckLootCondition.builder(LocationPredicate.Builder.create().canSeeSky(true)),
+                                new AnyOfLootCondition.Builder(
+                                        new WeatherCheckLootCondition.Builder().raining(true),
+                                        new WeatherCheckLootCondition.Builder().thundering(true)
+                                )
+                        )
+                )
+        );
+
+        register(registerable,ENCHANTMENT_ABSORBING,Enchantment.builder(Enchantment.definition(
+                itemsLookup.getOrThrow(ItemTags.EQUIPPABLE_ENCHANTABLE),
+                1,1,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
+        )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.VICTIM,EnchantmentEffectTarget.VICTIM,
+                new ApplyMobEffectEnchantmentEffect(
+                        RegistryEntryList.of(StatusEffects.INSTANT_HEALTH),
+                        EnchantmentLevelBasedValue.constant(0.05f),
+                        EnchantmentLevelBasedValue.constant(0.1f),
+                        EnchantmentLevelBasedValue.constant(0f),
+                        EnchantmentLevelBasedValue.constant(2f)),
+                RandomChanceLootCondition.builder(EnchantmentLevelLootNumberProvider.create(EnchantmentLevelBasedValue.linear(0.1f)))
+        ));
 
     }
 

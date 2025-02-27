@@ -17,6 +17,7 @@ public class DEE_Enchantment_Effects {
     public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_TIDES = registerEntityEffect("curse_tides", Curse_Tides.CODEC);
     public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_WORSEN = registerEntityEffect("curse_worsen", Curse_Worsen.CODEC);
     public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_EVAPORATION = registerEntityEffect("curse_evaporation", Curse_Evaporation.CODEC);
+    public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_Conductiveness = registerEntityEffect("curse_conductiveness", Curse_Conductiveness.CODEC);
 
     public static final MapCodec<? extends EnchantmentEntityEffect> CURSE_DAMAGE_BACKLASH = registerEntityEffect("curse_damage_backlash", CursedDamageBacklash.CODEC);
 

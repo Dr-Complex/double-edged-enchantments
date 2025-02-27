@@ -4,7 +4,6 @@ import net.dr_complex.double_edged_enchantments.item.DEE_Items;
 import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -33,6 +32,9 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(DEE_Tags.Items.SHOOT_ENCHANTABLE)
                 .addTag(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE)
+                .addTag(DEE_Tags.Items.SPEAR_WEAPONS);
+
+        getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
                 .addTag(DEE_Tags.Items.SPEAR_WEAPONS);
     }
 }

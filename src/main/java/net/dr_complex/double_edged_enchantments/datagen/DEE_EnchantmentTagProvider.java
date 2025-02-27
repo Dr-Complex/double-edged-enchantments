@@ -54,7 +54,12 @@ public class DEE_EnchantmentTagProvider extends FabricTagProvider.EnchantmentTag
                .add(DEE_Enchantments.CURSE_SPREAD)
                .add(DEE_Enchantments.CURSE_DRAG)
                .add(DEE_Enchantments.CURSE_WEIGHTLESSNESS)
-               .add(DEE_Enchantments.CURSE_REDIRECT);
+               .add(DEE_Enchantments.CURSE_REDIRECT)
+               .add(DEE_Enchantments.CURSE_IMPLOSION)
+               .add(DEE_Enchantments.CURSE_MISFORTUNE)
+               .add(DEE_Enchantments.CURSE_DEEP)
+               .add(DEE_Enchantments.CURSE_EVAPORATION)
+               .add(DEE_Enchantments.CURSE_CONDUCTIVENESS);
 
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
                 .add(DEE_Enchantments.ENCHANTMENT_LUCKY)
@@ -112,6 +117,7 @@ public class DEE_EnchantmentTagProvider extends FabricTagProvider.EnchantmentTag
                 .add(DEE_Enchantments.ENCHANTMENT_ACCURATE)
                 .add(DEE_Enchantments.ENCHANTMENT_MOON)
                 .add(DEE_Enchantments.ENCHANTMENT_REVEALING)
-                .add(DEE_Enchantments.ENCHANTMENT_RETURN);
+                .add(DEE_Enchantments.ENCHANTMENT_RETURN)
+                .add(DEE_Enchantments.ENCHANTMENT_ABSORBING);
     }
 }

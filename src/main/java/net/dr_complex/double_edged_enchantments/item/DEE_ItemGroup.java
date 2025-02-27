@@ -1,7 +1,6 @@
 package net.dr_complex.double_edged_enchantments.item;
 
 import net.dr_complex.double_edged_enchantments.DEE_Main;
-import net.dr_complex.double_edged_enchantments.other.DEE_Tags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -33,6 +32,7 @@ public class DEE_ItemGroup {
                         entries.add(DEE_Items.IRON_SPEAR);
                         entries.add(DEE_Items.DIAMOND_SPEAR);
                         entries.add(DEE_Items.NETHERITE_SPEAR);
+                        entries.add(DEE_Items.HEXING_TABLE);
 
                         displayContext.lookup().getOptional(RegistryKeys.ENCHANTMENT).ifPresent(enchantmentImpl -> enchantmentImpl.streamEntries()
                                 .filter(tag -> !tag.isIn(EnchantmentTags.CURSE))

@@ -36,6 +36,11 @@
     "double_edged_enchantments:curse_spread",
     "double_edged_enchantments:curse_drag",
     "double_edged_enchantments:curse_weightlessness",
-    "double_edged_enchantments:curse_redirect"
+    "double_edged_enchantments:curse_redirect",
+    "double_edged_enchantments:curse_implosion",
+    "double_edged_enchantments:curse_misfortune",
+    "double_edged_enchantments:curse_deep",
+    "double_edged_enchantments:curse_evaporation",
+    "double_edged_enchantments:curse_conductiveness"
   ]
 }

@@ -1,5 +1,6 @@
 package net.dr_complex.double_edged_enchantments.datagen;
 
+import net.dr_complex.double_edged_enchantments.block.DEE_Blocks;
 import net.dr_complex.double_edged_enchantments.item.DEE_Items;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -18,8 +19,8 @@ public class DEE_ModelProvider extends FabricModelProvider {
 
 
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+    public void generateBlockStateModels(@NotNull BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(DEE_Blocks.HEXING_TABLE);
     }
 
     @Override

@@ -2,7 +2,7 @@ package net.dr_complex.double_edged_enchantments.entity.client;
 
 import com.google.common.collect.Maps;
 import net.dr_complex.double_edged_enchantments.DEE_Main;
-import net.dr_complex.double_edged_enchantments.entity.custom.AbstractSpearEntity;
+import net.dr_complex.double_edged_enchantments.entity.projectiles.AbstractSpearEntity;
 import net.dr_complex.double_edged_enchantments.other.SpearType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

@@ -1,12 +1,12 @@
 package net.dr_complex.double_edged_enchantments;
 
-import eu.midnightdust.lib.config.MidnightConfig;
 import net.dr_complex.double_edged_enchantments.block.DEE_Blocks;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantment_Effects;
 import net.dr_complex.double_edged_enchantments.entity.DEE_Entities;
 import net.dr_complex.double_edged_enchantments.item.DEE_ItemGroup;
 import net.dr_complex.double_edged_enchantments.item.DEE_Items;
 import net.dr_complex.double_edged_enchantments.other.DEE_DataComponentTypes;
+import net.dr_complex.double_edged_enchantments.screen.DEE_ScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Contract;
@@ -30,6 +30,7 @@ public class DEE_Main implements ModInitializer {
 		DEE_DataComponentTypes.LoadDataComponents();
 		DEE_Enchantment_Effects.LoadEnchantmentEffects();
 		DEE_Entities.LoadEntities();
+		DEE_ScreenHandlers.LoadScreens();
 		LOGGER.info(MOD_ID + " is done");
 	}
 }

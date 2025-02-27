@@ -1,6 +1,7 @@
 package net.dr_complex.double_edged_enchantments.item;
 
 import net.dr_complex.double_edged_enchantments.DEE_Main;
+import net.dr_complex.double_edged_enchantments.block.DEE_Blocks;
 import net.dr_complex.double_edged_enchantments.item.custom.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -27,6 +28,7 @@ public class DEE_Items {
     public static final Item DIAMOND_SPEAR = register("diamond_spear", DiamondSpearItem::new,new Item.Settings().maxDamage(512).attributeModifiers(DiamondSpearItem.createAttributeModifiers()).enchantable(1));
     public static final Item NETHERITE_SPEAR = register("netherite_spear", NetheriteSpearItem::new,new Item.Settings().maxDamage(2048).attributeModifiers(NetheriteSpearItem.createAttributeModifiers()).enchantable(1));
     public static final Item COPPER_SPEAR = register("copper_spear", CopperSpearItem::new,new Item.Settings().maxDamage(80).attributeModifiers(CopperSpearItem.createAttributeModifiers()).enchantable(1));
+    public static final Item HEXING_TABLE = register(DEE_Blocks.HEXING_TABLE);
 
 
     private static RegistryKey<Item> keyOf(String id) {

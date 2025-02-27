@@ -1,4 +1,4 @@
-package net.dr_complex.double_edged_enchantments.entity.custom;
+package net.dr_complex.double_edged_enchantments.entity.projectiles;
 
 import net.dr_complex.double_edged_enchantments.other.SpearType;
 import net.minecraft.enchantment.EnchantmentHelper;

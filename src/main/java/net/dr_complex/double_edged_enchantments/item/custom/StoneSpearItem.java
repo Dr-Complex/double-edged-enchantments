@@ -1,7 +1,6 @@
 package net.dr_complex.double_edged_enchantments.item.custom;
 
-import net.dr_complex.double_edged_enchantments.entity.custom.StoneSpearEntity;
-import net.dr_complex.double_edged_enchantments.entity.custom.WoodenSpearEntity;
+import net.dr_complex.double_edged_enchantments.entity.projectiles.StoneSpearEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;

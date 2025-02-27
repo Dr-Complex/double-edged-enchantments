@@ -110,6 +110,7 @@ public abstract class ArrowEntityMixin extends PersistentProjectileEntity {
 
     @Inject(method = "onHit",at = @At("TAIL"))
     private void Redirecting(LivingEntity target, CallbackInfo ci){
+        target.timeUntilRegen = 0;
         if(this.dataTracker.get(level_of_redirect) > 0){
             float power = 1f/(this.dataTracker.get(level_of_redirect) + 1f);
             this.deflect(ProjectileDeflection.SIMPLE,target,this.getOwner(),false);

@@ -15,6 +15,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:enchantable/bow",
+  "supported_items": "#double_edged_enchantments:arrow_shoot_enchantable",
   "weight": 1
 }

@@ -2,7 +2,6 @@ package net.dr_complex.double_edged_enchantments.mixin;
 
 import com.google.common.collect.Lists;
 import net.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
-import net.dr_complex.double_edged_enchantments.other.DEE_DataComponentTypes;
 import net.fabricmc.fabric.api.item.v1.FabricItemStack;
 import net.minecraft.component.*;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -126,25 +125,16 @@ public abstract class CursedItemStackMixin implements ComponentHolder, FabricIte
     public void getFormattedNameRework(CallbackInfoReturnable<Text> cir) {
         MutableText mutableText = Text.empty().append(this.getName()).formatted(this.getRarity().getFormatting());
 
-
         if (this.contains(DataComponentTypes.CUSTOM_NAME)) {
             mutableText.formatted(Formatting.ITALIC);
         }
-
-
-        if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) != null){
-            if(this.get(DEE_DataComponentTypes.RARITY_CONTAINER) >= 5){
-                mutableText.formatted(Formatting.GREEN);
-            }
-        }
-
 
         if(this.hasEnchantments()) {
             var enchantments = this.getEnchantments().getEnchantments();
             var contention = enchantments.stream().map(enchantmentRegistryEntry -> enchantmentRegistryEntry.isIn(EnchantmentTags.CURSE));
             if(contention.toList().contains(true)){
                 if(!enchantments.stream().map(RegistryEntry::getIdAsString).toList().contains(DEE_Enchantments.CURSE_HIDDEN.getValue().toString())) {
-                    mutableText.formatted(Formatting.RED);
+                    mutableText.formatted(Formatting.RED,Formatting.UNDERLINE);
                 }
             }
         }
@@ -180,13 +170,11 @@ public abstract class CursedItemStackMixin implements ComponentHolder, FabricIte
 
     @Shadow protected abstract void appendAttributeModifiersTooltip(Consumer<Text> textConsumer, @Nullable PlayerEntity player);
 
-    @Shadow @Final @Deprecated private @Nullable Item item;
-
     @Shadow public abstract ItemStack copy();
 
     @Shadow public abstract Text getFormattedName();
 
-    @Shadow public abstract int getMaxCount();
+    @Shadow public abstract String toString();
 
     @Override
     public ComponentMap getComponents() {

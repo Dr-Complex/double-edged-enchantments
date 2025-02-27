@@ -13,7 +13,6 @@ public class DEE_DataComponentTypes {
 
     public static final ComponentType<Vec3d> POS_CONTAINER = register("pos_container", blockPosBuilder -> blockPosBuilder.codec(Vec3d.CODEC));
     public static final ComponentType<Integer> XP_CONTAINER = register("xp_container", integerBuilder -> integerBuilder.codec(Codec.INT));
-    public static final ComponentType<Integer> RARITY_CONTAINER = register("rarity_container",integerBuilder -> integerBuilder.codec(Codec.INT));
 
     private static <T>ComponentType<T> register(String name, UnaryOperator<ComponentType.Builder<T>> builderUnaryOperator){
         return Registry.register(Registries.DATA_COMPONENT_TYPE,DEE_Main.id(name), builderUnaryOperator.apply(ComponentType.builder()).build());

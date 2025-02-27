@@ -31,8 +31,7 @@
 		"minecraft": "~1.21.4",
 		"java": ">=21",
 		"fabric-api": "*",
-		"modmenu": ">=13.0.0",
-		"midnightlib": ">=1.6.6-fabric"
+		"modmenu": ">=13.0.0"
 	},
 	"suggests": {
 		"another-mod": "*"
