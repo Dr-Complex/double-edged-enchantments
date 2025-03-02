@@ -16,6 +16,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.screen.Property;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.Slot;
@@ -28,13 +29,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HexingTableScreenHandler extends ScreenHandler {
-
     private final ScreenHandlerContext context;
-    private final Slot InputSlot;
+    private final Slot MainSlot;
     private final Slot Material_UD_Slot;
     private final Slot Material_EC_Slot;
     private List<RegistryEntry<Enchantment>> enchants;
     private final DynamicRegistryManager registryManager;
+    final Property selectedEnchantment = Property.create();
+    Runnable inventoryChangeListener = () -> {
+    };
     private final Inventory InputInventory = new SimpleInventory(3){
         @Override
         public void markDirty() {
@@ -51,10 +54,7 @@ public class HexingTableScreenHandler extends ScreenHandler {
         super(DEE_ScreenHandlers.HEXING_TABLE_SCREEN_HANDLER,syncId);
         this.context = context;
 
-
-
-        this.InputSlot = this.addSlot(new Slot(this.InputInventory, 0, 26, 30) {
-
+        this.MainSlot = this.addSlot(new Slot(this.InputInventory, 0, 26, 30) {
             @Override
             public int getMaxItemCount() {
                 return 1;
@@ -147,13 +147,16 @@ public class HexingTableScreenHandler extends ScreenHandler {
     @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
-        this.context.run((world, pos) -> this.dropInventory(player, this.InputInventory));
+        this.context.run((world, pos) -> {
+            this.dropInventory(player, this.InputInventory);
+            this.enchants = List.of();
+        });
     }
 
     @Override
     public void onContentChanged(Inventory inventory) {
         if (inventory == this.InputInventory) {
-            ItemStack MAIN_INPUT = this.InputSlot.getStack();
+            ItemStack MAIN_INPUT = this.MainSlot.getStack();
             ItemStack EC_INPUT = this.Material_EC_Slot.getStack();
 
             if(!MAIN_INPUT.isEmpty() && !EC_INPUT.isEmpty()){
@@ -188,7 +191,7 @@ public class HexingTableScreenHandler extends ScreenHandler {
         return this.Material_EC_Slot;
     }
 
-    private void setEnchants(List<RegistryEntry<Enchantment>> enchants) {
+    public void setEnchants(List<RegistryEntry<Enchantment>> enchants) {
         this.enchants = enchants;
     }
 
@@ -198,60 +201,76 @@ public class HexingTableScreenHandler extends ScreenHandler {
 
     @Override
     public boolean onButtonClick(PlayerEntity player, int id) {
-        ItemStack InputItem = this.InputSlot.getStack();
-        ItemStack ECItem = this.Material_EC_Slot.getStack();
-        ItemStack UDItem = this.Material_UD_Slot.getStack();
-
         if (id >= 0 && id < this.enchants.size()) {
-
-            RegistryEntry<Enchantment> entry = this.enchants.get(id);
-            if((player.experienceLevel < 3) && !player.getAbilities().creativeMode) {
-                DEE_Main.LOGGER.info("no exp | creative");
-                return false;
-            } else if (InputItem.getEnchantments().getLevel(entry) <= 0  && !UDItem.isOf(Items.IRON_INGOT)) {
-                DEE_Main.LOGGER.info("decrease below 0");
-                return false;
-            } else if (InputItem.getEnchantments().getLevel(entry) >= 10 && UDItem.isOf(Items.IRON_INGOT)) {
-                DEE_Main.LOGGER.info("increase above 10");
-                return false;
-            } else {
-                this.context.run((world, blockPos) -> {
-                    int UDLevel;
-
-                    if(UDItem.isOf(Items.IRON_INGOT)){
-                        UDLevel = InputItem.getEnchantments().getLevel(entry) + 1;
-                    } else if (UDItem.isOf(Items.COPPER_INGOT)) {
-                        UDLevel = InputItem.getEnchantments().getLevel(entry) - 1;
-                    }else {
-                        UDLevel = InputItem.getEnchantments().getLevel(entry);
-                    }
-
-                    EnchantmentHelper.apply(InputItem,builder -> builder.add(entry,UDLevel));
-
-                    ECItem.decrementUnlessCreative(1,player);
-                    if(ECItem.isEmpty()){
-                        this.InputInventory.setStack(1,ItemStack.EMPTY);
-                    }
-
-                    UDItem.decrementUnlessCreative(1,player);
-                    if(UDItem.isEmpty()){
-                        this.InputInventory.setStack(2,ItemStack.EMPTY);
-                    }
-
-                    player.incrementStat(Stats.ENCHANT_ITEM);
-                    if (player instanceof ServerPlayerEntity serverPlayer) {
-                        Criteria.ENCHANTED_ITEM.trigger(serverPlayer, InputItem, 1);
-                    }
-
-                    this.InputInventory.markDirty();
-                    this.onContentChanged(this.InputInventory);
-                    player.getWorld().playSound(null, player.getBlockPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1.1f, 0.1f);
-                });
-                return true;
-            }
+            this.selectedEnchantment.set(id);
+            return this.Update(this.enchants.get(this.selectedEnchantment.get()),player);
         } else {
-            DEE_Main.LOGGER.error("Error 1");
+            DEE_Main.LOGGER.error("{} is out of range of {}",id, this.enchants.size());
             return false;
         }
+    }
+
+    public Slot getMainSlot() {
+        return null;
+    }
+
+    public void setInventoryChangeListener(Runnable inventoryChangeListener) {
+        this.inventoryChangeListener = inventoryChangeListener;
+    }
+
+    private boolean Update(RegistryEntry<Enchantment> entry, PlayerEntity player) {
+        ItemStack InputItem = this.MainSlot.getStack();
+        ItemStack UDItem = this.Material_UD_Slot.getStack();
+        ItemStack ECItem = this.Material_EC_Slot.getStack();
+
+        if ((player.experienceLevel < 5) && !player.getAbilities().creativeMode) {
+            DEE_Main.LOGGER.info("no exp | creative");
+            return false;
+        } else if (InputItem.getEnchantments().getLevel(entry) <= 0 && !UDItem.isOf(Items.IRON_INGOT)) {
+            DEE_Main.LOGGER.info("decrease below 0");
+            return false;
+        } else if (InputItem.getEnchantments().getLevel(entry) >= 10 && UDItem.isOf(Items.IRON_INGOT)) {
+            DEE_Main.LOGGER.info("increase above 10");
+            return false;
+        } else {
+            this.context.run((world, blockPos) -> {
+                int UDLevel;
+
+                if (UDItem.isOf(Items.IRON_INGOT)) {
+                    UDLevel = InputItem.getEnchantments().getLevel(entry) + 1;
+                } else if (UDItem.isOf(Items.COPPER_INGOT)) {
+                    UDLevel = InputItem.getEnchantments().getLevel(entry) - 1;
+                } else {
+                    UDLevel = InputItem.getEnchantments().getLevel(entry);
+                }
+
+                EnchantmentHelper.apply(InputItem, builder -> builder.add(entry, UDLevel));
+
+                ECItem.decrementUnlessCreative(1, player);
+                if (ECItem.isEmpty()) {
+                    this.InputInventory.setStack(1, ItemStack.EMPTY);
+                }
+
+                UDItem.decrementUnlessCreative(1, player);
+                if (UDItem.isEmpty()) {
+                    this.InputInventory.setStack(2, ItemStack.EMPTY);
+                }
+
+                if (ECItem.isOf(Items.LAPIS_LAZULI)) {
+                    player.incrementStat(Stats.ENCHANT_ITEM);
+                } else {
+                    player.incrementStat(DEE_Main.CURSED_STAT);
+                }
+
+                if (player instanceof ServerPlayerEntity serverPlayer) {
+                    Criteria.ENCHANTED_ITEM.trigger(serverPlayer, InputItem, 1);
+                }
+
+                this.InputInventory.markDirty();
+                this.onContentChanged(this.InputInventory);
+                player.getWorld().playSound(null, player.getBlockPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1.1f, 0.1f);
+            });
+        }
+        return true;
     }
 }

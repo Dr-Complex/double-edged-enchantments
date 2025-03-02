@@ -1,25 +1,24 @@
 package net.dr_complex.double_edged_enchantments.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.dr_complex.double_edged_enchantments.entity.block.HexingTableEntity;
 import net.dr_complex.double_edged_enchantments.screen.HexingTableScreenHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -28,9 +27,10 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class HexingTableBlock extends BlockWithEntity {
+public class HexingTableBlock extends HorizontalFacingBlock {
 
     public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
+    private static final Text TITLE = Text.translatable("container.hes");
     public static final MapCodec<HexingTableBlock> CODEC = createCodec(HexingTableBlock::new);
 
     public HexingTableBlock(Settings settings) {
@@ -38,14 +38,10 @@ public class HexingTableBlock extends BlockWithEntity {
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
+    protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
         return CODEC;
     }
 
-    @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new HexingTableEntity(pos,state);
-    }
 
     @Override
     protected ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
@@ -56,25 +52,6 @@ public class HexingTableBlock extends BlockWithEntity {
             }
         }
         return ActionResult.SUCCESS;
-    }
-
-    @Override
-    protected void onStateReplaced(@NotNull BlockState state, World world, BlockPos pos, @NotNull BlockState newState, boolean moved) {
-        if(state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-
-            if(blockEntity instanceof Inventory){
-                ItemScatterer.spawn(world,pos,(Inventory) blockEntity);
-                world.updateComparators(pos,this);
-            }
-
-            super.onStateReplaced(state,world,pos,newState,moved);
-        }
-    }
-
-    @Override
-    protected int getComparatorOutput(BlockState state, @NotNull World world, BlockPos pos) {
-        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
     @Override
@@ -97,25 +74,26 @@ public class HexingTableBlock extends BlockWithEntity {
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 
-
     @Override
-    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof HexingTableEntity) {
-            ((HexingTableEntity)blockEntity).onScheduledTick();
-        }
+    protected @Nullable NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, @NotNull World world, BlockPos pos) {
+        return new SimpleNamedScreenHandlerFactory(
+                (syncId, inventory, player) -> new HexingTableScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), TITLE);
     }
 
     @Override
-    protected @Nullable NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, @NotNull World world, BlockPos pos) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof HexingTableEntity) {
-            Text text = ((Nameable)blockEntity).getDisplayName();
-            return new SimpleNamedScreenHandlerFactory(
-                    (syncId, inventory, player) -> new HexingTableScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), text
-            );
-        } else {
-            return null;
-        }
+    protected boolean canPathfindThrough(BlockState state, NavigationType type) {
+        return false;
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        super.randomDisplayTick(state, world, pos, random);
+        world.addParticle(
+                ParticleTypes.NOTE,
+                pos.getX(),
+                pos.getY(),
+                pos.getZ(),
+                0.15,0.15,0.15
+        );
     }
 }

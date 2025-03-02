@@ -1,7 +1,6 @@
 package net.dr_complex.double_edged_enchantments.enchantments.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.dr_complex.double_edged_enchantments.DEE_Main;
 import net.minecraft.enchantment.EnchantmentEffectContext;
 import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.entity.Entity;

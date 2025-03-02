@@ -10,6 +10,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -65,7 +66,7 @@ public class DEE_Items {
         return register(block, factory, new Item.Settings());
     }
 
-    public static Item register(Block block, BiFunction<Block, Item.Settings, Item> factory, Item.Settings settings) {
+    public static Item register(@NotNull Block block, BiFunction<Block, Item.Settings, Item> factory, Item.@NotNull Settings settings) {
         return register(
                 keyOf(block.getRegistryEntry().registryKey()), itemSettings -> factory.apply(block, itemSettings), settings.useBlockPrefixedTranslationKey()
         );

@@ -8,6 +8,8 @@ import net.dr_complex.double_edged_enchantments.item.DEE_Items;
 import net.dr_complex.double_edged_enchantments.other.DEE_DataComponentTypes;
 import net.dr_complex.double_edged_enchantments.screen.DEE_ScreenHandlers;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -22,8 +24,13 @@ public class DEE_Main implements ModInitializer {
 		return Identifier.of(MOD_ID,path);
 	}
 
+	public static final Identifier CURSED_STAT = id("cursed_stat");
+
 	@Override
 	public void onInitialize() {
+
+		Registry.register(Registries.CUSTOM_STAT,"cursed_stat",CURSED_STAT);
+
 		DEE_ItemGroup.LoadItemGroups();
 		DEE_Items.LoadItems();
 		DEE_Blocks.LoadBlocks();

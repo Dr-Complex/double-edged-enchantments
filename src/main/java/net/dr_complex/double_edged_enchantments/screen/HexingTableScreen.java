@@ -10,43 +10,33 @@ import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
-
     private static final Identifier MainTexture = DEE_Main.id("textures/gui/sprites/container/hexing_table.png");
     private static final Identifier EnchantmentTexture = DEE_Main.id("textures/gui/sprites/container/enchantment.png");
     private static final Identifier CurseTexture = DEE_Main.id("textures/gui/sprites/container/curse.png");
     private static final Identifier UpTexture = DEE_Main.id("textures/gui/sprites/container/up.png");
     private static final Identifier DownTexture = DEE_Main.id("textures/gui/sprites/container/down.png");
     private int ticks;
+    private boolean isAble = false;
 
 
     public HexingTableScreen(HexingTableScreenHandler handler, PlayerInventory inventory, Text title) {
-        super(handler, inventory, getPositionedText(handler).orElse(title));
+        super(handler, inventory, title);
+        handler.setInventoryChangeListener(this::onInventoryChanged);
         this.ticks = 0;
-    }
-
-    private static Optional<Text> getPositionedText(ScreenHandler handler){
-        if(handler instanceof PositionedScreenHandler){
-            BlockPos pos = ((PositionedScreenHandler) handler).getPos();
-            return pos != null ? Optional.of(Text.literal("(" + pos.toShortString() + ")")) : Optional.empty();
-        }else {
-            return Optional.empty();
-        }
     }
 
     @Override
@@ -92,16 +82,16 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
                     int highlight;
                     if (bl) {
                         if(ConductorSlot.getStack().isOf(Items.LAPIS_LAZULI)){
-                            highlight = 0xffffff;
+                            highlight = 0x75ffffff;
                         }else {
-                            highlight = 0x010101;
+                            highlight = 0x75010101;
                         }
 
                     } else {
-                        highlight = 0x898989;
+                        highlight = 0x75808080;
                     }
 
-                    context.drawText(this.textRenderer,String.valueOf(q),r,s,highlight,false);
+                    context.drawText(this.textRenderer,String.valueOf(q),r,s,this.isAble? highlight:0x55000000,false);
                     if(bl){
                         context.drawTooltip(this.textRenderer,Text.translatable(list.get(q).value().toString()),r,s);
                     }
@@ -115,9 +105,9 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
+        this.renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
-        drawMouseoverTooltip(context,mouseX,mouseY);
+        this.drawMouseoverTooltip(context,mouseX,mouseY);
     }
 
     @Override
@@ -149,5 +139,20 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
             }
         }
         return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+    private void onInventoryChanged() {
+        int k = 0;
+        ItemStack MAIN_INPUT = this.handler.getMainSlot().getStack();
+        List<RegistryEntry<Enchantment>> ListOfEnchantments = this.handler.getEnchants();
+
+        for (RegistryEntry<Enchantment> entry : ListOfEnchantments) {
+            if (MAIN_INPUT.getEnchantments().getLevel(entry) >= entry.value().getMaxLevel()) {
+                k++;
+            }
+        }
+
+        this.isAble = k <= 0;
+        this.handler.setEnchants(ListOfEnchantments);
     }
 }
